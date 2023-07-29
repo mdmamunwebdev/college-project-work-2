@@ -1,0 +1,462 @@
+/* ***********************************************************************************************************
+ # Variables
+ *********************************************************************************************************** */
+
+:root {
+    --border-neumo: #D1D9E6;
+    /*--neumo-bg-color: #EBE7E6;*/
+    --neumo-bg-color: #E6E7EE;
+    /*--neumo-color: #D31B27;*/
+    --neumo-color: #44476a;
+    --neumo-hover-color: #9a9dbf;
+    --neumo-secondary-color: #2D4CC8;
+    --neumo-success-color: #00BF9A;
+    --neumo-dark-color: #44476a;
+    --neumo-danger-color: #FA5252;
+
+    --box-shadow-none: 1px 1px 0px #e9e5e4,
+    -1px -1px 0px #ede9e8;
+
+    /*--box-shadow-primary: 3px 3px 3px #b5b2b1,*/
+    /*-3px -3px 5px #ffffff;*/
+
+    --box-shadow-primary: 3px 3px 6px #b8b9be,-3px -3px 6px #fff;
+
+    /*--box-shadow-sidebar:  -3px -3px 7px #ffffff,*/
+    /*3px 3px 5px #c8c4c4,*/
+    /*inset -3px -3px 7px #ffffff,*/
+    /*inset 3px 3px 5px #c8c4c4;*/
+
+    --box-shadow-sidebar:  -3px -3px 6px #b8b9be, 3px 3px 6px #fff,
+    inset -3px -3px 6px #fff, inset 3px 3px 6px #b8b9be;
+
+    --box-shadow-nav-primary: -5px -5px 10px #bebbba,
+    5px 5px 10px #ffffff;
+
+    /*--box-shadow-sidebar-links: 3px 3px 3px #b5b2b1,*/
+    /*-3px -3px 5px #ffffff;*/
+    /*--box-shadow-sidebar-links-hover: inset 2px 2px 5px #b5b2b1,*/
+    /*inset -3px -3px 7px #FFFFFF;*/
+    --box-shadow-sidebar-links: 3px 3px 3px #b8b9be,
+    -3px -3px 5px #fff;
+    --box-shadow-sidebar-links-hover: inset 2px 2px 5px #b8b9be,
+    inset -3px -3px 7px #FFF;
+
+    /*--box-shadow-sidebar-submenu: inset 2px 2px 5px #b5b2b1, inset -3px -3px 7px #FFFFFF;*/
+    --box-shadow-sidebar-submenu: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #FFF;
+}
+
+/* ***********************************************************************************************************
+ # General
+ *********************************************************************************************************** */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+}
+
+body {
+    color: var(--neumo-color);
+    background-color: var(--neumo-bg-color);
+}
+
+.bg-neumo {
+    background-color: var(--neumo-bg-color) !important;
+}
+
+.text-neumo {
+    color: var(--neumo-color) !important;
+}
+
+.text-secondary-neumo {
+    color: var(--neumo-secondary-color) !important;
+}
+
+.text-success-neumo {
+    color: var(--neumo-success-color) !important;
+}
+
+.text-primary-size {
+    font-size: 12px;
+}
+
+.neumo-primary {
+    color: var(--neumo-color);
+    background-color: var(--neumo-bg-color);
+    box-shadow: var(--box-shadow-primary);
+}
+
+.neumo-nav-primary {
+    box-shadow: var(--box-shadow-nav-primary);
+}
+
+.border-neumo {
+    border: 1px solid var(--border-neumo) !important;
+}
+
+.border-secondary-neumo {
+    border: 1px solid var(--neumo-secondary-color) !important;
+}
+
+.border-dark-neumo {
+    border: 1px solid var(--neumo-dark-color) !important;
+}
+
+
+/* ***********************************************************************************************************
+ # DatePicker
+ *********************************************************************************************************** */
+
+.flatpickr-calendar,
+.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month {
+    box-shadow: var(--box-shadow-primary) !important;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month {
+    font-size: 12px !important;
+}
+
+.flatpickr-month,
+.flatpickr-weekday,
+.flatpickr-calendar ,
+.flatpickr-monthDropdown-months,
+.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month {
+    background-color: var(--neumo-bg-color) !important;
+}
+
+.flatpickr-day,
+.flatpickr-weekday,
+.flatpickr-month,
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months .flatpickr-monthDropdown-month,
+.flatpickr-time input,
+.flatpickr-time .flatpickr-am-pm {
+    color: #44476a !important;
+    fill:  #44476a !important;
+}
+
+.numInputWrapper span.arrowUp::after {
+    border-bottom: 4px solid #4e5075 !important;
+    border-bottom-color: #44476a !important;
+}
+
+.numInputWrapper span.arrowDown::after {
+    border-top: 4px solid #4e5075 !important;
+    border-top-color: #44476a !important;
+}
+
+/* ***********************************************************************************************************
+ # Summernote Editor
+ *********************************************************************************************************** */
+
+.note-toolbar {
+    background-color: var(--neumo-bg-color);
+    border: none;
+}
+
+.note-btn {
+    background-color: var(--neumo-bg-color);
+    font-size: 12px;
+    /*border: none;*/
+}
+
+.note-dropdown-menu {
+    background-color: var(--neumo-bg-color);
+    box-shadow: var(--box-shadow-primary);
+    /*border: none;*/
+}
+
+.note-modal-content {
+    background-color: var(--neumo-bg-color) !important;
+    padding: 12px;
+    border: none;
+}
+
+
+/* ***********************************************************************************************************
+ # Nav Pills
+ *********************************************************************************************************** */
+
+.bg-neumo-pills {
+    color: var(--neumo-color);
+    background-color: var(--neumo-bg-color);
+    box-shadow: var(--box-shadow-sidebar-links-hover);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: var(--neumo-color);
+    background-color: var(--neumo-bg-color);
+    box-shadow: var(--box-shadow-primary);
+}
+
+.bg-neumo-pills .form-control {
+    font-size: 12px !important;
+}
+
+.nav-pills .nav-link {
+    color: #44476a;
+}
+
+/* ***********************************************************************************************************
+ # Nav Tabs
+ *********************************************************************************************************** */
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: var(--neumo-color) !important;
+    background-color: var(--neumo-bg-color);
+    box-shadow: var(--box-shadow-primary);
+    border-radius: unset;
+    border: none;
+}
+
+/* ***********************************************************************************************************
+ # Form Input Field
+ *********************************************************************************************************** */
+
+.form-control {
+    height: calc(1.5em + 1.2rem + 0.0625rem);
+    padding: 0.6rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--neumo-color);
+    background-color: var(--neumo-bg-color);
+    box-shadow: inset 2px 2px 5px #e1e1e1, inset -3px -3px 7px #FFFFFF;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    outline: 0;
+    color: var(--neumo-color);
+    background-color: var(--neumo-bg-color);
+    border-color: #D1D9E6;
+    box-shadow: inset 2px 2px 5px #b5b2b1, inset -3px -3px 7px #FFFFFF;
+}
+
+
+
+.form-check-input[type="checkbox"] {
+    color: var(--neumo-color);
+    background-color: var(--neumo-bg-color);
+    box-shadow: inset 2px 2px 5px #b5b2b1, inset -3px -3px 7px #FFFFFF;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-check-input:checked {
+    background-color: var(--neumo-bg-color);
+    border-color: #D1D9E6;
+    color: var(--neumo-color);
+}
+
+.form-check-input:focus {
+    border-color: #D1D9E6;
+    color: var(--neumo-color);
+    outline: 0;
+    box-shadow: inset 2px 2px 5px #b5b2b1, inset -3px -3px 7px #FFFFFF;
+}
+
+/* ***********************************************************************************************************
+ # Datatable
+ *********************************************************************************************************** */
+
+div.dataTables_wrapper div.dataTables_filter .form-control {
+    height: 33px;
+    color: black;
+    font-size: 12px;
+    width: 78% !important;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+    background-color: var(--neumo-bg-color) !important;
+    box-shadow: var(--box-shadow-primary);
+}
+
+.dataTables_paginate .pagination li .page-link {
+    color: var(--neumo-color) !important;
+    background-color: var(--neumo-bg-color) !important;
+}
+
+.dataTables_paginate .pagination .page-item.active .page-link {
+    border-color: var(--border-neumo) !important;
+    color: var(--neumo-color) !important;
+    background-color: var(--neumo-bg-color) !important;
+    box-shadow: var(--box-shadow-primary);
+}
+
+div.dataTables_wrapper .dt-buttons {
+    margin-top: 5px;
+    border-color: var(--border-neumo) !important;
+    color: var(--neumo-color) !important;
+    background-color: var(--neumo-bg-color) !important;
+    box-shadow: var(--box-shadow-primary);
+}
+
+div.dataTables_wrapper .dt-buttons .btn {
+    border-radius: unset;
+    border-color: var(--border-neumo) !important;
+    color: var(--neumo-color) !important;
+    background-color: var(--neumo-bg-color) !important;
+}
+
+
+/* ***********************************************************************************************************
+ # Radio Button
+ *********************************************************************************************************** */
+
+.radio-container {
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+.radio-wrapper {
+    margin-bottom: 10px;
+}
+
+.radio-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.radio-button:hover {
+    transform: translateY(-2px);
+}
+
+.radio-button input[type="radio"] {
+    display: none;
+}
+
+.radio-checkmark {
+    display: inline-block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    border: 2px solid #333;
+    border-radius: 50%;
+}
+
+.radio-checkmark:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #333;
+    transition: all 0.2s ease-in-out;
+}
+
+.radio-button input[type="radio"]:checked ~ .radio-checkmark:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-label {
+    font-weight: 600;
+}
+
+/* ***********************************************************************************************************
+ # Product Image Upload
+ *********************************************************************************************************** */
+
+.AppBody {
+    border: 1px dotted var(--neumo-color);
+    height: 300px;
+    background-color: var(--neumo-bg-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.AppBody.active {
+    border: 3px dotted var(--neumo-color);
+}
+.icon {
+    font-size: 30px;
+    color: var(--neumo-color);
+}
+.AppBody h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+.AppBody span {
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    margin: 10px 0 15px 0;
+}
+
+.AppBody img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+
+/* ***********************************************************************************************************
+ # Upload Image
+ *********************************************************************************************************** */
+
+.upload{
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+.upload img{
+    border: 3px dotted var(--neumo-color);
+}
+.upload .rightRound{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.upload .leftRound{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+.upload .fa{
+    color: white;
+}
+.upload input{
+    position: absolute;
+    transform: scale(2);
+    opacity: 0;
+}
+.upload input::-webkit-file-upload-button {
+    cursor: pointer;
+}
+
+
+/* ***********************************************************************************************************
+ # App Footer
+ *********************************************************************************************************** */
+
+.footer-extra {
+    position: absolute;
+    width: 98%;
+    bottom: 0;
+}
