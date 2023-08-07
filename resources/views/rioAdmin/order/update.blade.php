@@ -601,8 +601,7 @@
                                                                         <div class="col-12">
                                                                             <select class="form-select neumo-primary border-neumo text-primary-size"
                                                                                     name="category_id" id="productCat">
-                                                                                <option>-- Select Category --</option>
-
+                                                                                <option selected>-- Please Select Category --</option>
                                                                                 @foreach($category as $categoryItem)
                                                                                     <option value="{{ $categoryItem->id }}"
                                                                                             class="text-capitalize">{{ $categoryItem->name }}</option>
@@ -862,7 +861,7 @@
             let formData = $(this).serialize(); // Serialize the form data
 
             $.ajax({
-                url: "{{ route('ordered.custom.product') }}",
+                url: "{{ route('ordered.custom.product', ['id' => $order->id]) }}",
                 type: "GET",
                 data: formData,
                 dataType: "json",

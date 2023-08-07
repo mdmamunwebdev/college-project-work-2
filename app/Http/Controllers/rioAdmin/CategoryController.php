@@ -19,23 +19,26 @@ class CategoryController extends Controller
         return redirect()->back()->with('addCatMsg', 'Category is added with successfully !!');
     }
 
-    function categoryUpdate() {
-        return view('rioAdmin.category.update');
+    function categoryUpdate($id) {
+        return view('rioAdmin.category.update', ['category' => Category::find($id), 'categories' => Category::all()]);
     }
 
-    function update() {
-        //
+    function update(Request $request, $id) {
+        Category::categoryUpdate($request, $id);
+        return redirect('/category')->with('cat_update_msg', 'Category has updated successfully.');
     }
 
     function detail() {
         return view('rioAdmin.category.detail');
     }
 
-    function status() {
-        //
+    function status($id) {
+        Category::categoryStatus($id);
+        return redirect('/category')->with('cat_status_msg', 'Category status has changed successfully.');
     }
 
-    function delete() {
-        //
+    function delete($id) {
+        Category::categoryDelete($id);
+        return redirect('/category')->with('cat_delete_msg', 'Category has deleted successfully.');
     }
 }

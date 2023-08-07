@@ -13,6 +13,9 @@ use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes Start
@@ -83,8 +86,8 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/product/update/{id}', [ProductController::class, 'productUpdateForm'])->name('product.update');
     Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
 
-    Route::post('/product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
-    Route::post('/product/status/{id}', [ProductController::class, 'status'])->name('product.status');
+    Route::get('/product/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+    Route::get('/product/status/{id}', [ProductController::class, 'status'])->name('product.status');
     /**************************************** Product Routes End *****************************************/
 
     /**************************************** Product Category Routes *****************************************/
@@ -97,8 +100,8 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/category/update/{id}', [CategoryController::class, 'categoryUpdate'])->name('category.update');
     Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 
-    Route::post('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
-    Route::post('/category/status/{id}', [CategoryController::class, 'status'])->name('category.status');
+    Route::get('/category/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+    Route::get('/category/status/{id}', [CategoryController::class, 'status'])->name('category.status');
     /**************************************** Product Category Routes End *****************************************/
 
     /**************************************** Product Tag Routes *****************************************/
@@ -130,7 +133,7 @@ Route::middleware(['admin:admin'])->group(function () {
     /**************************************** Order Routes End *****************************************/
 
     Route::get('/order/product/category/{cat_id}/{order_id}', [OrderController::class, 'productSearchByCat'])->name('order.product.category');
-    Route::get('/ordered/custom/product', [OrderController::class, 'customOrderedProduct'])->name('ordered.custom.product');
+    Route::get('/ordered/custom/product/{id}', [OrderController::class, 'customOrderedProduct'])->name('ordered.custom.product');
     Route::get('/ordered/product/qty-update/{ordered_product_id}/{product_qty}', [OrderController::class, 'productQtyUpdate'])->name('ordered.product.qty-update');
     Route::get('/ordered/product/delete/{ordered_product_id}/{order_id}', [OrderController::class, 'orderedProductDel'])->name('ordered.product.delete');
 

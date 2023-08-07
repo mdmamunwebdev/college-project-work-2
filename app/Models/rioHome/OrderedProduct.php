@@ -2,6 +2,7 @@
 
 namespace App\Models\rioHome;
 
+use App\Models\rioAdmin\Order;
 use App\Models\rioAdmin\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -30,13 +31,14 @@ class OrderedProduct extends Model
 
             self::$product->sale_price = self::$product_price->sale_price;
             self::$product->total_price = ( self::$product_price->sale_price * $req->product_qty );
+            self::$product->order_status = $order->order_status;
             self::$product->save();
 
             Cart::find( $item->id )->delete();
         }
     }
 
-    public static function customOrderedProduct($req) {
+    public static function customOrderedProduct($req, $id) {
 
             self::$product = new OrderedProduct();
             self::$product->order_id = $req->order_id;
@@ -44,6 +46,7 @@ class OrderedProduct extends Model
             self::$product->category_id = $req->category_id;
             self::$product->product_qty = $req->product_qty;
             self::$product->user_ip = 'custom_order';
+            self::$product->order_status = Order::find($id)->order_status;
 
             self::$product_price = Product::find($req->product_id); // Query for product sale price
 

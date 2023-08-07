@@ -20,7 +20,7 @@ class PageController extends Controller
     }
 
     function ourFoods(Request $request) {
-        return view('rioHome.pages.our-foods', ['categories' => Category::all(), 'products' => Product::all(), 'items' => Cart::where('user_ip', $request->ip())->get(), 'total' => 0]);
+        return view('rioHome.pages.our-foods', ['categories' => Category::all()->where('status', 1), 'products' => Product::all(), 'items' => Cart::where('user_ip', $request->ip())->get(), 'total' => 0]);
     }
 
     function checkout(Request $request) {

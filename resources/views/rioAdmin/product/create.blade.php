@@ -299,7 +299,7 @@
                                     <div class="d-flex justify-content-between my-2 text-neumo">
                                         <i class="bi bi-lamp-fill"></i>
                                         <span>Status :</span>
-                                        <span id="statusInfo">Published</span>
+                                        <span id="statusInfo">Publish</span>
                                         <input id="product-status" type="text" hidden name="status" value="0"/>
                                         <div class="btn-group">
                                             <button class="btn btn-danger btn-sm" type="button">
@@ -311,7 +311,7 @@
                                                 <span class="visually-hidden">Toggle Dropdown</span>
                                             </button>
                                             <ul class="dropdown-menu neumo-primary">
-                                                <li><a class="dropdown-item" href="#" onclick="productStatus(0)">Published</a>
+                                                <li><a class="dropdown-item" href="#" onclick="productStatus(0)">Publish</a>
                                                 </li>
                                                 <li><a class="dropdown-item" href="#" onclick="productStatus(1)">Pending
                                                         Review</a></li>
@@ -365,7 +365,7 @@
                                 <div>
                                     <button type="submit" id="productPublished"
                                             class="btn btn-sm neumo-primary text-secondary-neumo border-secondary-neumo text-primary-size">
-                                        Published
+                                        Publish
                                     </button>
                                 </div>
                             </div>
@@ -401,7 +401,7 @@
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
-                                        <div class="p-3 tab-pane fade show active bg-neumo text-neumo"
+                                        <div class="p-3 tab-pane fade show active bg-neumo text-neumo text-capitalize"
                                              id="one-category-tab-pane" role="tabpanel"
                                              aria-labelledby="one-tab-category" tabindex="0">
                                             @if( count($categories) )
@@ -415,7 +415,7 @@
                                                 <span>No Category yet !!</span>
                                             @endif
                                         </div>
-                                        <div class="p-3 tab-pane fade neumo-bg text-neumo" id="two-category-tab-pane"
+                                        <div class="p-3 tab-pane fade neumo-bg text-neumo text-capitalize" id="two-category-tab-pane"
                                              role="tabpanel" aria-labelledby="two-tab-category" tabindex="0">
                                             <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
                                                                                    class="me-2"/>Lunch</label>
@@ -627,7 +627,7 @@
             if (status === 0) {
 
                 productStatusBtn.style.display = 'none';
-                statusInfo.innerHTML = 'Published';
+                statusInfo.innerHTML = 'Publish';
                 productPublished.style.display = 'block';
                 product_status.value = 0;
 

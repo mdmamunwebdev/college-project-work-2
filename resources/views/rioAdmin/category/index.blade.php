@@ -113,7 +113,7 @@
                             <th>Name</th>
                             <th>Image</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th class="text-end">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -124,32 +124,37 @@
                                 <td>
                                     <div>
                                         @if($category->image)
-                                            <img class="img-thumbnail h-25 w-25" src="{{ asset( $category->image ) }}"
-                                                 alt=""/>
+                                            <img class="img-thumbnail" src="{{ asset( $category->image ) }}"
+                                                 alt="" style="height: 50px; width: 50px;"/>
                                         @else
-                                            <img class="img-thumbnail h-25 w-25"
+                                            <img class="img-thumbnail"
                                                  src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
-                                                 alt=""/>
+                                                 alt="" style="height: 50px; width: 50px;"/>
                                         @endif
                                     </div>
                                 </td>
-                                <td><span
-                                        class="badge  {{ $category->status == 1 ? 'bg-success':'bg-danger' }}">{{ $category->status == 1 ? 'Active':'Deactive' }}</span>
+                                <td>
+                                    <span class="badge  {{ $category->status == 1 ? 'bg-success':'bg-danger' }}">{{ $category->status == 1 ? 'Active':'Deactive' }}</span>
                                 </td>
                                 <td>
-                                    <ul class="list-unstyled hstack gap-1 mb-0">
-                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                            <button class="btn btn-sm btn-soft-primary" data-bs-toggle="modal"
-                                                    data-bs-target=".category-detailModal-{{ $category->id }}"><i
+                                    <ul class="list-unstyled hstack gap-1 mb-0 justify-content-end">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
+                                            <button class="btn btn-sm text-dark" data-bs-toggle="modal"
+                                                    data-bs-target=".Category-detailModal-{{ $category->id }}"><i
                                                     class="bi bi-eye"></i></button>
                                         </li>
                                         <li data-bs-toggle="tooltip" data-bs-placement="top" title="Status">
-                                            <a href="#" class="btn btn-sm btn-soft-secondary"><i
-                                                    class="bi bi-arrow-up-circle"></i></a>
+                                            <a href="{{ route('category.status', ['id' => $category->id]) }}" class="btn btn-sm  {{ $category->status == 1 ? 'text-success' : 'text-warning' }}"><i
+                                                    class="bi {{ $category->status == 1 ? 'bi-arrow-up-circle' : 'bi-arrow-down-circle' }}"></i>
+                                            </a>
                                         </li>
                                         <li data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                            <a href="#" class="btn btn-sm btn-soft-info"><i
+                                            <a href="{{ route('category.update', ['id' => $category->id]) }}" class="btn btn-sm text-primary"><i
                                                     class="bi bi-pencil-square"></i></a>
+                                        </li>
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                            <a href="{{ route('category.delete', ['id' => $category->id]) }}" class="btn btn-sm text-danger"><i
+                                                    class="bi bi-trash"></i></a>
                                         </li>
                                     </ul>
 

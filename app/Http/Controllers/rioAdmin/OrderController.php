@@ -71,9 +71,9 @@ class OrderController extends Controller
         return response()->json($response);
     }
 
-    public function customOrderedProduct(Request $request) {
+    public function customOrderedProduct(Request $request, $id) {
 
-        $orderedProduct =  OrderedProduct::customOrderedProduct($request);
+        $orderedProduct =  OrderedProduct::customOrderedProduct($request, $id);
 
         $price_cal = $this->priceCal($request->order_id);
 

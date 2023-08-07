@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RIO || Dashboard || @yield("title")</title>
+    <title>RIO || @yield("title")</title>
 
     <!-- Boxicons CDN Link -->
     <link href="{{ asset('/') }}rioAdmin/assets/css/boxicons.min.css" rel="stylesheet">

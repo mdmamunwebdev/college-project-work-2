@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductCategory extends Model
 {
     use HasFactory;
-    private static $productCat;
+    private static $productCat, $productCatDel;
 
     public static function addPrductCat($product, $req) {
 
@@ -19,6 +19,23 @@ class ProductCategory extends Model
             self::$productCat->save();
         }
 
+    }
+
+    public static function updateProductCat($product, $req) {
+
+        self::$productCat = ProductCategory::all()->where('product_id', $product->id);
+
+        foreach (self::$productCat as $oldCategory) {
+            self::$productCatDel = ProductCategory::find($oldCategory->id);
+            self::$productCatDel->delete();
+        }
+
+        foreach ($req->category as $newCategory) {
+            self::$productCat = new ProductCategory();
+            self::$productCat->product_id = $product->id;
+            self::$productCat->category_id = $newCategory;
+            self::$productCat->save();
+        }
     }
 
     public function product() {
