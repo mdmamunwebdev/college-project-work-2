@@ -535,9 +535,10 @@
                                                         <div class="card bg-neumo neumo-primary my-2">
                                                             <div class="card-body p-3">
                                                                 <div class="card-title py-0">Apply coupons</div>
-                                                                <form id="coupon">
+                                                                <form action="" class="d-none" method="get"></form>
+                                                                <form id="coupon"  method="get">
                                                                     <div class="d-flex justify-content-between align-items-center">
-                                                                        <input type="text" name="coupon"
+                                                                        <input type="text" name="coupon_code"
                                                                                placeholder="Apply your coupons here"
                                                                                class="form-control w-75"
                                                                                style="font-size: 11px; padding: 8px;"/>
@@ -551,13 +552,13 @@
                                                         <div class="card bg-neumo neumo-primary my-2">
                                                             <div class="card-body p-3">
                                                                 <div class="card-title py-0">Apply Shipping Fees</div>
-                                                                <form id="shipping_fees">
+                                                                <form id="shipping_fees" method="get">
                                                                     <div class="d-flex justify-content-between align-items-center">
-                                                                        <input type="number" name="coupon"
+                                                                        <input type="number" name="shipping_fees"
                                                                                placeholder="Apply your Shipping Fees here"
                                                                                class="form-control w-75"
                                                                                style="font-size: 11px; padding: 8px;"/>
-                                                                        <button class="btn ms-2 bg-neumo neumo-primary flex-grow-1">
+                                                                        <button  class="btn ms-2 bg-neumo neumo-primary flex-grow-1">
                                                                             Apply
                                                                         </button>
                                                                     </div>
@@ -575,11 +576,29 @@
                                                                     </div>
                                                                     <div class="d-flex justify-content-between align-itmes-center">
                                                                         <span>Discount through applied coupons : </span>
-                                                                        <span>{{ $order->coupon_discount }}$</span>
+
+                                                                        <div id="d-coupon">
+                                                                            @if($order->coupon_discount_price)
+                                                                                @if($order->coupon_calculation == 1)
+                                                                                    <span>{{ $order->coupon_discount_price }}%</span>
+                                                                                @else
+                                                                                    <span>{{ $order->coupon_discount_price }}$</span>
+                                                                                @endif
+                                                                            @else
+                                                                                <span>N/A</span>
+                                                                            @endif
+                                                                        </div>
+
                                                                     </div>
                                                                     <div class="d-flex justify-content-between align-itmes-center">
                                                                         <span>Shipping fees : </span>
-                                                                        <span>{{ $order->shipping_fees }}$</span>
+
+                                                                        @if($order->ship_method == 0)
+                                                                            <span id="d-ship-fee">{{ $order->shipping_fees }}$</span>
+                                                                        @else
+                                                                            <span>N/A</span>
+                                                                        @endif
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -689,7 +708,7 @@
                                         <div class="card card-body bg-neumo neumo-primary p-3">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div>
-                                                    <sup>&dollar;</sup><span id="total">{{ $order->amount }}</span>
+                                                    <sup>&dollar;</sup><span id="total">{{ $order->total }}</span>
                                                 </div>
                                                 <div>Total(USD)</div>
                                             </div>
@@ -717,11 +736,11 @@
                                             <div class="accordion-body bg-neumo">
                                                 <div class="d-flex justify-content-between mb-2 text-neumo">
                                                     <i class="bi bi-calendar3"></i>
-                                                    <span>Order Generated : </span>
+                                                    <span>Shipping Date : </span>
                                                     <div class="neumo-primary  border-dark-neumo" style="width: 50%">
-                                                        <input readonly type="text" id=""
+                                                        <input  type="text" id="ship_date" name="ship_date"
                                                                class="p-1 border-0 text-center w-100 h-100 bg-neumo"
-                                                               value="{{ $order->order_create_date }}"/>
+                                                               value="{{ $order->ship_date }}"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -753,9 +772,9 @@
                                         <div id="collapseFour" class="accordion-collapse collapse show  px-0"
                                              data-bs-parent="#accordionOrderNote">
                                             <div class="accordion-body bg-neumo">
-                                           <textarea class="form-control" id="summernote5" name="cus_notes" rows="10">
-                                                 {{ $order->cus_notes }}
-                                           </textarea>
+                                                <textarea class="form-control" id="summernote5" name="cus_notes" rows="10">
+                                                     {{ $order->cus_notes }}
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -774,6 +793,54 @@
     <script type="text/javascript">
 
         let categorySelector = document.getElementById('productCat');
+
+        $('#coupon').submit(function (event) {
+
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            let formData = $(this).serialize(); // Serialize the form data
+
+            $.ajax({
+                url: "{{ route('order.update.coupon', ['id' => $order->id]) }}",
+                type: "GET",
+                data: formData,
+                dataType: "json",
+                success: function (response) {
+
+                    $('#d-coupon').text(response.price)
+                    $('#total').text(response.total)
+
+                    console.log(response)
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+
+        $('#shipping_fees').submit(function (event) {
+
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            let formData = $(this).serialize(); // Serialize the form data
+
+            $.ajax({
+                url: "{{ route('order.update.shipping-fees', ['id' => $order->id]) }}",
+                type: "GET",
+                data: formData,
+                dataType: "json",
+                success: function (response) {
+
+                    $('#d-ship-fee').text(response.shipping_fees)
+                    $('#total').text(response.total)
+
+                    console.log(response)
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
 
         categorySelector.addEventListener("change", function () {
             productCategory(categorySelector.value);
@@ -932,6 +999,12 @@
                 event.value = 1;
             }
         }
+
+        $("#ship_date").flatpickr({
+            minDate: "today",
+            // defaultDate: ['today'],
+            dateFormat: "Y-m-d",
+        })
 
         $('#summernote5').summernote({
             placeholder: 'Write Here Your Order Notes',

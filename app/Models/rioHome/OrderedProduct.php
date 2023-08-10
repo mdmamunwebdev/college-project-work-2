@@ -36,6 +36,7 @@ class OrderedProduct extends Model
 
             Cart::find( $item->id )->delete();
         }
+        CartCoupon::cartCouponDel($req);
     }
 
     public static function customOrderedProduct($req, $id) {

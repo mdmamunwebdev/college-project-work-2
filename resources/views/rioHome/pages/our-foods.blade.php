@@ -21,14 +21,14 @@
 
         <!-- ======= Menu Section ======= -->
         <section id="menu" class="menu">
-            <div class="container neumorphism p-5" data-aos="fade-up">
+            <div class="container neumorphism p-5" data-aos="fade-down">
 
                 <div class="section-header">
                     <h2>Our Menu</h2>
                     <p>Check Out Our <span>Delicious Menu</span></p>
                 </div>
 
-                <ul class="nav nav-tabs d-flex justify-content-center neumo-active" data-aos="fade-up"
+                <ul class="nav nav-tabs d-flex justify-content-center neumo-active" data-aos="fade-down"
                     data-aos-delay="200">
 
                     @foreach( $categories as $category)
@@ -53,7 +53,7 @@
 
                 </ul>
 
-                <div class="tab-content text-capitalize" data-aos="fade-up" data-aos-delay="300">
+                <div class="tab-content text-capitalize" data-aos="fade-down" data-aos-delay="300">
 
                     @foreach($categories as $category)
 

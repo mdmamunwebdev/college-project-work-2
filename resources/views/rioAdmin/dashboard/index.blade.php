@@ -55,16 +55,16 @@
         <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
             <div class="iocn-link">
                 <a href="#">
-                    <i class="bi bi-tag"></i>
-                    <span class="link_name">Tag</span>
+                    <i class='bx bxs-coupon'></i>
+                    <span class="link_name">Coupon</span>
                 </a>
                 <i class='bx bxs-chevron-down arrow'></i>
             </div>
             <ul class="sub-menu">
-                <li class="ln"><span class="link_name">Category</span></li>
+                <li class="ln"><span class="link_name">Coupon</span></li>
                 <li class="d-flex justify-content-start p-0">
                     <i class='bx bx-list-plus'></i>
-                    <a href="{{ route('category') }}">Category</a>
+                    <a href="{{ route('coupon') }}">Coupon</a>
                 </li> <!-- When active This link, then here is added a class (active-item) -->
             </ul>
         </li>
@@ -93,27 +93,15 @@
                 <i class='bx bxs-chevron-down arrow'></i>
             </div>
             <ul class="sub-menu">
-                <li class="ln"><span class="link_name">Category</span></li>
+                <li class="ln"><span class="link_name">Customer</span></li>
                 <li class="d-flex justify-content-start p-0">
                     <i class='bx bx-list-plus'></i>
-                    <a href="{{ route('category') }}">Category</a>
+                    <a href="{{ route('customer.list') }}">Customer</a>
                 </li> <!-- When active This link, then here is added a class (active-item) -->
-            </ul>
-        </li>
-        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
-            <div class="iocn-link">
-                <a href="#">
-                    <i class='bx bxs-coupon'></i>
-                    <span class="link_name">Cuupon</span>
-                </a>
-                <i class='bx bxs-chevron-down arrow'></i>
-            </div>
-            <ul class="sub-menu">
-                <li class="ln"><span class="link_name">Category</span></li>
                 <li class="d-flex justify-content-start p-0">
-                    <i class='bx bx-list-plus'></i>
-                    <a href="{{ route('category') }}">Category</a>
-                </li> <!-- When active This link, then here is added a class (active-item) -->
+                    <i class='bx bx-add-to-queue'></i>
+                    <a href="{{ route('customer.create') }}" class="flex-grow-1">Add Customer</a>
+                </li>
             </ul>
         </li>
         <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
@@ -125,26 +113,26 @@
                 <i class='bx bxs-chevron-down arrow'></i>
             </div>
             <ul class="sub-menu">
-                <li class="ln"><span class="link_name">Category</span></li>
+                <li class="ln"><span class="link_name">Table</span></li>
                 <li class="d-flex justify-content-start p-0">
                     <i class='bx bx-list-plus'></i>
-                    <a href="{{ route('category') }}">Category</a>
+                    <a href="">Table</a>
                 </li> <!-- When active This link, then here is added a class (active-item) -->
             </ul>
         </li>
         <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
             <div class="iocn-link">
                 <a href="#">
-                    <i class="bi bi-graph-up"></i>
-                    <span class="link_name">Analysis</span>
+                    <i class="bi bi-gear"></i>
+                    <span class="link_name">Settings</span>
                 </a>
                 <i class='bx bxs-chevron-down arrow'></i>
             </div>
             <ul class="sub-menu">
-                <li class="ln"><span class="link_name">Category</span></li>
+                <li class="ln"><span class="link_name">Settings</span></li>
                 <li class="d-flex justify-content-start p-0">
                     <i class='bx bx-list-plus'></i>
-                    <a href="{{ route('category') }}">Category</a>
+                    <a href="#">Settings</a>
                 </li> <!-- When active This link, then here is added a class (active-item) -->
             </ul>
         </li>

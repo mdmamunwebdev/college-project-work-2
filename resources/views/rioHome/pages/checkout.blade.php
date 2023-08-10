@@ -179,23 +179,61 @@
                                         <span>Your cart subtotal:</span>
                                         <span>{{ $sub_total }}&dollar;</span>
                                         <span>Discount through applied coupons:</span>
-                                        <span>3.99$</span>
-                                        <span>Shipping fees:</span>
+
+                                            @if($cart_coupon)
+                                                @if($cart_coupon->coupon->status == 1)
+                                                    @if($cart_coupon->coupon->calculation == 1)
+                                                        <span>{{ $cart_coupon->coupon->price }}%</span>
+                                                    @else
+                                                        <span>{{ $cart_coupon->coupon->price }}$</span>
+                                                    @endif
+                                                @else
+                                                    <span>0$</span>
+                                                @endif
+                                            @else
+                                                <span>0$</span>
+                                            @endif
+
+                                        <span>Shipping fees <small class="badge text-bg-secondary">Only for Home Delivery</small> :</span>
                                         <span>4.99$</span>
                                     </div>
                                     <div class="checkout--footer">
-                                        @php
-                                            $total =  ($sub_total + ((4.99) - (3.99)))
-                                        @endphp
+
+                                        @if($cart_coupon)
+                                            @if($cart_coupon->coupon->status == 1)
+                                                @if($cart_coupon->coupon->calculation == 1)
+                                                    @php
+                                                        $price = $cart_coupon->coupon->price / 100;
+                                                        $discount = $price * $sub_total;
+                                                        $total = ( ($sub_total + (4.99)) - $discount ); // According to Percentage
+                                                    @endphp
+                                                @else
+                                                    @php
+                                                        $total = ( ($sub_total + (4.99)) - $cart_coupon->coupon->price ) // According to Addition
+                                                    @endphp
+                                                @endif
+                                            @else
+                                                @php
+                                                    $total =  $total = ($sub_total + (4.99) )
+                                                @endphp
+                                            @endif
+                                        @else
+                                            @php
+                                                $total = ($sub_total + (4.99) )
+                                            @endphp
+                                        @endif
+
                                         <label class="price"><sup>$</sup>{{ $total }}</label>
                                         <div class="btn">Total (USD)</div>
                                     </div>
                                 </div>
                                 <div class="card coupons">
                                     <label class="title">Apply coupons</label>
-                                    <form class="form">
-                                        <input type="text" placeholder="Apply your coupons here" class="input_field">
-                                        <button>Apply</button>
+                                    <form class="form" action="{{ route('cart-coupon') }}"  method="post">
+                                        @csrf
+
+                                        <input type="text" name="code" placeholder="Apply your coupons here" class="input_field">
+                                        <button type="submit">Apply</button>
                                     </form>
                                 </div>
                             </div>
@@ -207,14 +245,22 @@
                     <form class="needs-validationn" novalidate action="{{ url('/pay') }}" method="POST">
                         @csrf
 
-                        <input type="hidden" class="form-control" id='amount' name="amount" placeholder=""
+                        <input type="hidden" class="form-control" id='amount' name="total" placeholder=""
                                value="{{  $total }}" required/>
                         <input type="hidden" class="form-control" id='subtotal' name="subtotal" placeholder=""
                                value="{{  $sub_total }}" required/>
-                        <input type="hidden" class="form-control" id='coupon' name="coupon" placeholder=""
-                               value="{{ 0 }}" required/>
-                        <input type="hidden" class="form-control" id='coupon_discount' name="coupon_discount"
-                               placeholder="" value="{{ 3.99 }}" required/>
+
+                        @if($cart_coupon)
+                            <input type="hidden" class="form-control" id='coupon_id' name="coupon" placeholder=""
+                                   value="{{ $cart_coupon->coupon->id }}" />
+                            <input type="hidden" class="form-control" id='coupon_code' name="coupon" placeholder=""
+                                   value="{{ $cart_coupon->coupon->code }}" />
+                            <input type="hidden" class="form-control" id='coupon_discount_price' name="coupon_discount"
+                                   placeholder="" value="{{ $cart_coupon->coupon->price }}" />
+                            <input type="hidden" class="form-control" id='coupon_calculation' name="coupon_calculation"
+                                   placeholder="" value="{{ $cart_coupon->coupon->calculation }}" />
+                        @endif
+
                         <input type="hidden" class="form-control" id='shipping_fees' name="shipping_fees" placeholder=""
                                value="{{ 4.99 }}" required/>
 
@@ -284,6 +330,11 @@
                                             class="text-body-secondary">(Optional)</span></label>
                                 <input type="text" class="form-control" id="cus_address2" name="cus_address2"
                                        placeholder="Apartment or suite"/>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="cus_address2" class="form-label">Shipping Date<sup class="text-danger">*</sup></label>
+                                <input type="text" class="form-control" id="ship_date" name="ship_date"/>
                             </div>
 
                             <div class="col-md-3">
@@ -478,6 +529,15 @@
 @endsection
 
 @section('script')
+
+    <script>
+        $("#ship_date").flatpickr({
+            minDate: "today",
+            defaultDate: ['today'],
+            dateFormat: "Y-m-d",
+        });
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>
@@ -487,5 +547,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
+
+
 @endsection
 

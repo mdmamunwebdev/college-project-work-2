@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\rioAdmin\AdminAuthController;
 use App\Http\Controllers\rioAdmin\CategoryController;
+use App\Http\Controllers\rioAdmin\CouponController;
 use App\Http\Controllers\rioAdmin\CustomerController;
 use App\Http\Controllers\rioAdmin\OrderController;
 use App\Http\Controllers\rioAdmin\ProductController;
@@ -29,6 +30,7 @@ Route::get('/our-foods', [PageController::class, 'ourFoods'])->name('our-foods')
 Route::get('/checkout', [PageController::class, 'checkout'])->name('checkout');
 Route::get('/cart/add', [CartController::class, 'addCart'])->name('cart.add');
 Route::post('/order/place', [OrderPlaceController::class, 'orderPlace'])->name('order.place');
+Route::post('/cart-coupon', [CartController::class, 'addCartCoupon'])->name('cart-coupon');
 
 /*
 |--------------------------------------------------------------------------
@@ -104,19 +106,19 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/category/status/{id}', [CategoryController::class, 'status'])->name('category.status');
     /**************************************** Product Category Routes End *****************************************/
 
-    /**************************************** Product Tag Routes *****************************************/
-    Route::get('/tag', [TagController::class, 'index'])->name('tag');
+    /**************************************** Product Coupon Routes *****************************************/
+    Route::get('/coupon', [CouponController::class, 'index'])->name('coupon');
 
-    Route::post('/tag/create', [TagController::class, 'create'])->name('tag.create');
+    Route::post('/coupon/create', [CouponController::class, 'create'])->name('coupon.create');
 
-    Route::get('/tag/detail/{id}', [TagController::class, 'detail'])->name('tag.detail');
+    Route::get('/coupon/detail/{id}', [CouponController::class, 'detail'])->name('coupon.detail');
 
-    Route::get('/tag/update/{id}', [TagController::class, 'tagUpdate'])->name('tag.update');
-    Route::post('/tag/update/{id}', [TagController::class, 'update'])->name('tag.update');
+    Route::get('/coupon/update/{id}', [CouponController::class, 'couponUpdate'])->name('coupon.update');
+    Route::post('/coupon/update/{id}', [CouponController::class, 'update'])->name('coupon.update');
 
-    Route::post('/tag/delete/{id}', [TagController::class, 'delete'])->name('tag.delete');
-    Route::post('/tag/status/{id}', [TagController::class, 'status'])->name('tag.status');
-    /**************************************** Product Tag Routes End *****************************************/
+    Route::get('/coupon/delete/{id}', [CouponController::class, 'delete'])->name('coupon.delete');
+    Route::get('/coupon/status/{id}', [CouponController::class, 'status'])->name('coupon.status');
+    /**************************************** Product Coupon Routes End *****************************************/
 
     /**************************************** Order Routes *****************************************/
     Route::get('/order/list', [OrderController::class, 'index'])->name('order.list');
@@ -131,6 +133,9 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::post('/order/delete/{id}', [OrderController::class, 'delete'])->name('order.delete');
     Route::post('/order/status/{id}', [OrderController::class, 'status'])->name('order.status');
     /**************************************** Order Routes End *****************************************/
+
+    Route::get('/order/update/coupon/{id}', [OrderController::class, 'orderCouponUpdate'])->name('order.update.coupon');
+    Route::get('/order/update/shipping-fees/{id}', [OrderController::class, 'orderShipFeesUpdate'])->name('order.update.shipping-fees');
 
     Route::get('/order/product/category/{cat_id}/{order_id}', [OrderController::class, 'productSearchByCat'])->name('order.product.category');
     Route::get('/ordered/custom/product/{id}', [OrderController::class, 'customOrderedProduct'])->name('ordered.custom.product');

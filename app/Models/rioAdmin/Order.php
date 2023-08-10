@@ -54,13 +54,23 @@ class Order extends Model
         self::$order->order_create_date  = date('Y-m-d');
 //        self::$order->tran_date  = '';
         self::$order->subtotal        = $req->subtotal;
-        self::$order->coupon          = $req->coupon;
-        self::$order->coupon_discount = $req->coupon_discount;
+        self::$order->coupon_id       = $req->coupon_id;
+        self::$order->coupon_code     = $req->coupon_code;
+        self::$order->coupon_discount_price = $req->coupon_discount_price;
+        self::$order->coupon_calculation = $req->coupon_calculation;
         self::$order->shipping_fees   = $req->shipping_fees;
-        self::$order->amount          = $req->amount;
+
+        if ( $req->ship_method == 1 ) {
+            self::$order->total          = $req->total - $req->shipping_fees;
+        } else {
+            self::$order->total          = $req->total;
+        }
+
         self::$order->status          = 'Pending';
+        self::$order->order_status    = 0;
         self::$order->pay_method      = $req->paymentMethod;
         self::$order->ship_method     = $req->ship_method;
+        self::$order->ship_date     = $req->ship_date;
         self::$order->transaction_id  = uniqid();
         self::$order->currency        = 'BDT';
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 //use DB;
+use App\Models\rioHome\CartCoupon;
 use App\Models\rioHome\OrderedProduct;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ class SslCommerzPaymentController extends Controller
             $this->validate($request, [
                 'cus_email'     => 'required|email',
                 'cus_phone'     => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11',
+                'ship_date'     => 'required',
             ], [
                 'cus_email.required'    => 'Please enter a must be valid email address for shipping updates.',
                 'cus_email.email'       => 'Your email is invalid.',
@@ -48,6 +50,7 @@ class SslCommerzPaymentController extends Controller
             $this->validate($request, [
                 'cus_email'     => 'required|email',
                 'cus_phone'     => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11',
+                'ship_date'     => 'required',
 
                 'ship_email'    => 'required|email',
                 'ship_phone'    => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:11|max:11',
@@ -123,7 +126,7 @@ class SslCommerzPaymentController extends Controller
                     'name' => $post_data['cus_name'],
                     'email' => $post_data['cus_email'],
                     'phone' => $post_data['cus_phone'],
-                    'amount' => $post_data['total_amount'],
+                    'total' => $post_data['total_amount'],
                     'status' => 'Pending',
                     'address' => $post_data['cus_add1'],
                     'transaction_id' => $post_data['tran_id'],
@@ -233,7 +236,7 @@ class SslCommerzPaymentController extends Controller
         #Check order status in order tabel against the transaction id or order id.
         $order_details = DB::table('orders')
             ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
+            ->select('transaction_id', 'status', 'currency', 'total')->first();
 
         if ($order_details->status == 'Pending') {
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);

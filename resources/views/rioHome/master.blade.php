@@ -13,6 +13,10 @@
     <!-- Jquery js -->
     <script src="{{ asset('/') }}rioHome/assets/vendor/jquery/jquery-3.6.4.min.js"></script>
 
+    <!-- DatePicker  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,10 +150,12 @@
             <div class="mt-auto p-2">
                 <div class="master-container">
                     <div class="card coupons">
-                        <label class="title">Apply coupons</label>
-                        <form class="form">
-                            <input type="text" placeholder="Apply your coupons here" class="input_field">
-                            <button>Apply</button>
+                        <label class="title">Apply Coupons</label>
+                        <form class="form" action="{{ route('cart-coupon') }}"  method="post">
+                            @csrf
+
+                            <input type="text" name="code" placeholder="Apply your coupons here" class="input_field">
+                            <button type="submit">Apply</button>
                         </form>
                     </div>
                     <div class="card checkout">
@@ -157,15 +163,51 @@
                         <div class="details">
                             <span>Your cart subtotal:</span>
                             <span>{{ $sub_total }}$</span>
-                            <span>Discount through applied coupons:</span>
-                            <span>3.99$</span>
+                            <span>Discount through applied coupon:</span>
+
+                                @if($cart_coupon)
+                                    @if($cart_coupon->coupon->status == 1)
+                                        @if($cart_coupon->coupon->calculation == 1)
+                                            <span>{{ $cart_coupon->coupon->price }}%</span>
+                                        @else
+                                            <span>{{ $cart_coupon->coupon->price }}$</span>
+                                        @endif
+                                    @else
+                                        <span>0$</span>
+                                    @endif
+                                @else
+                                    <span>0$</span>
+                                @endif
+
                             <span>Shipping fees:</span>
                             <span>4.99$</span>
                         </div>
                         <div class="checkout--footer">
-                            @php
-                                $total = ($sub_total + ((4.99) - (3.99)))
-                            @endphp
+
+                            @if($cart_coupon)
+                                @if($cart_coupon->coupon->status == 1)
+                                    @if($cart_coupon->coupon->calculation == 1)
+                                        @php
+                                            $price = $cart_coupon->coupon->price / 100;
+                                            $discount = $price * $sub_total;
+                                            $total = ( ($sub_total + (4.99)) - $discount ); // According to Percentage
+                                        @endphp
+                                    @else
+                                        @php
+                                            $total = ( ($sub_total + (4.99)) - $cart_coupon->coupon->price ) // According to Addition
+                                        @endphp
+                                    @endif
+                                @else
+                                    @php
+                                        $total =  $total = ($sub_total + (4.99) )
+                                    @endphp
+                                @endif
+                            @else
+                                @php
+                                    $total = ($sub_total + (4.99) )
+                                @endphp
+                            @endif
+
                             <label class="price"><sup>$</sup>{{  $total  }}</label>
                             <a href="{{ route('checkout') }}"  class="checkout-btn">Checkout</a>
                         </div>
@@ -185,6 +227,8 @@
 <script src="{{ asset('/') }}rioHome/assets/vendor/purecounter/purecounter_vanilla.js"></script>
 <script src="{{ asset('/') }}rioHome/assets/vendor/swiper/swiper-bundle.min.js"></script>
 <script src="{{ asset('/') }}rioHome/assets/vendor/php-email-form/validate.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <!-- Checkout JS File -->
 <script src="{{ asset('/') }}rioHome/assets/js/checkout.js"></script>
