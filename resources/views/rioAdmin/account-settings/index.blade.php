@@ -1,7 +1,7 @@
 @extends('rioAdmin.master')
 
 @section('title')
-    Customer || Update
+    Account || Settings
 @endsection
 
 @section('sidebar-links')
@@ -84,7 +84,7 @@
                 </li> <!-- When active This link, then here is added a class (active-item) -->
             </ul>
         </li>
-        <li class="with-submenu showMenu"> <!-- When active This link, then here is added a class (showMenu) -->
+        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
             <div class="iocn-link">
                 <a href="#">
                     <i class="bi bi-person-badge"></i>
@@ -94,7 +94,7 @@
             </div>
             <ul class="sub-menu">
                 <li class="ln"><span class="link_name">Customer</span></li>
-                <li class="active-item d-flex justify-content-start p-0">
+                <li class="d-flex justify-content-start p-0">
                     <i class='bx bx-list-plus'></i>
                     <a href="{{ route('customer.list') }}">Customer</a>
                 </li> <!-- When active This link, then here is added a class (active-item) -->
@@ -225,11 +225,11 @@
 @section('main-content')
 
     <div class="pagetitle neumo-primary p-3 d-flex justify-content-between">
-        <h1 class="lh-base">Update Customer</h1>
+        <h1 class="lh-base">Account Settings</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Update Customer</a></li>
-                <li class="breadcrumb-item active">Update Customer</li>
+                <li class="breadcrumb-item"><a href="#">Account Settings</a></li>
+                <li class="breadcrumb-item active">Account Settings</li>
             </ol>
         </nav>
     </div>
@@ -240,12 +240,15 @@
                 <div class="card neumo-primary">
                     <div class="card-body border-bottom">
                         <div class="d-flex align-items-center">
-                            <h5 class="mb-0 card-title flex-grow-1">Update Customer Information</h5>
+                            <h5 class="mb-0 card-title flex-grow-1">
+                                <i class="bi bi-gear-fill"></i>
+                                Account Settings
+                            </h5>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <form action="{{ route("customer.update", ['id' => $customer->id]) }}" method="post" class="outer-repeater" enctype="multipart/form-data">
+                        <form action="{{ route("account.settings", ['id' => Auth::guard('admin')->user()->id]) }}" method="post" class="outer-repeater" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row g-2">
@@ -262,7 +265,7 @@
                                                             </label>
                                                         </div>
                                                         <div class="avatar-preview" style="background-color: #E6E7EE; box-shadow: 3px 3px 6px #b8b9be,-3px -3px 6px #fff; border: 6px solid #E6E7EE;">
-                                                            <div id="imagePreview" style="background-image:  url({{ $customer->image != null ? asset($customer->image) : 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'}})">
+                                                            <div id="imagePreview" style="background-image:  url({{ Auth::guard('admin')->user()->image != null ? asset(Auth::guard('admin')->user()->image) : 'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'}})">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -280,7 +283,7 @@
                                             <label for="name" class="col-md-3">Name</label>
                                             <div class="col-md-9">
                                                 <div class="card card-body neumo-primary p-0">
-                                                    <input type="text" id="name" class="form-control" name="name" placeholder="Name" value="{{ $customer->name }}"/>
+                                                    <input type="text" id="name" class="form-control" name="name" placeholder="Name" value="{{ Auth::guard('admin')->user()->name }}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +292,7 @@
                                             <label for="email" class="col-md-3">Email</label>
                                             <div class="col-md-9">
                                                 <div class="card card-body neumo-primary p-0">
-                                                    <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ $customer->email }}"/>
+                                                    <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ Auth::guard('admin')->user()->email }}"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -298,7 +301,7 @@
                                             <label for="phone" class="col-md-3">Phone</label>
                                             <div class="col-md-9">
                                                 <div class="card card-body neumo-primary p-0">
-                                                    <input id="phone" type="number" class="form-control" name="phone" placeholder="Phone" value="{{ $customer->phone }}"/>
+                                                    <input id="phone" type="number" class="form-control" name="phone" placeholder="Phone" value="{{ Auth::guard('admin')->user()->phone }}"/>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\rioAdmin\AccountSettingsController;
 use App\Http\Controllers\rioAdmin\AdminAuthController;
 use App\Http\Controllers\rioAdmin\CategoryController;
 use App\Http\Controllers\rioAdmin\CouponController;
 use App\Http\Controllers\rioAdmin\CustomerController;
 use App\Http\Controllers\rioAdmin\OrderController;
 use App\Http\Controllers\rioAdmin\ProductController;
+use App\Http\Controllers\rioAdmin\AppSettingsController;
 use App\Http\Controllers\rioHome\CartController;
 use App\Http\Controllers\rioHome\OrderPlaceController;
 use App\Http\Controllers\rioHome\PageController;
@@ -73,7 +75,7 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.
 Route::get('/admin/register', [AdminAuthController::class, 'registerForm'])->name('admin.register');
 Route::post('/admin/register', [AdminAuthController::class, 'register'])->name('admin.register');
 
-Route::middleware(['admin:admin'])->group(function () {
+Route::middleware(['admin:admin'])->group(callback: function () {
 
     Route::get('/admin/dashboard', [AdminAuthController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
@@ -152,9 +154,18 @@ Route::middleware(['admin:admin'])->group(function () {
     Route::get('/customer/update/{id}', [CustomerController::class, 'customerUpdateForm'])->name('customer.update');
     Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
 
-    Route::post('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+    Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
     Route::post('/customer/status/{id}', [CustomerController::class, 'status'])->name('customer.status');
     /**************************************** Customer Routes End *****************************************/
+
+    /**************************************** App Settings Routes *****************************************/
+
+    Route::get('/app/settings', [AppSettingsController::class, 'appSettingsForm'])->name('app.settings');
+    Route::post('/app/settings', [AppSettingsController::class, 'update'])->name('app.settings');
+    Route::get('/account/settings', [AccountSettingsController::class, 'accountSettingsForm'])->name('account.settings-form');
+    Route::post('/account/settings/{id}', [AccountSettingsController::class, 'update'])->name('account.settings');
+
+    /**************************************** Settings Routes End *****************************************/
 
 });
 

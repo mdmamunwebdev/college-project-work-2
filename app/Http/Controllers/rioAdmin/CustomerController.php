@@ -20,10 +20,29 @@ class CustomerController extends Controller
         return view('rioAdmin.customer.create', ['customers' => User::orderBy('id', 'desc')->get()]);
     }
 
-    function create(Request $request) {
-        $this->customer = User::customerAdd($request);
+    function create(Request $request, User $user) {
 
-        return redirect('/customer/list')->with('customerAddMsg', 'A new customer has been added successfully.');
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        $userData = $user->create([
+            'image'=> Customer::customerImgDir($request),
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => $request->password
+        ]);
+
+        if ($userData) {
+            return redirect('/customer/list')->with('customerAddMsg', 'A new customer has been added successfully.');
+        }
+        else {
+            return back()->with('customerInvalidMsg', 'A new customer has been added successfully.');
+        }
+
     }
 
     function customerUpdateForm($id) {
@@ -31,7 +50,14 @@ class CustomerController extends Controller
     }
 
     function update(Request $request, $id) {
-        $this->customer = User::customerUpdate($request, $id);
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        $this->customer = Customer::customerUpdate($request, $id);
 
         return redirect('/customer/list')->with('customerUpdateMsg', 'Your update has completed successfully.');
     }
@@ -45,7 +71,7 @@ class CustomerController extends Controller
     }
 
     function delete($id) {
-        User::customerDelete($id);
+        Customer::customerDelete($id);
 
         return redirect('/customer/list')->with('customerDeleteMsg', 'A customer has been deleted successfully.');
     }

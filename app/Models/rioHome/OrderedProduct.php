@@ -12,7 +12,7 @@ class OrderedProduct extends Model
 {
     use HasFactory;
 
-    private static $product,$product_price, $cart;
+    private static $product, $orderedProduct,$product_price, $cart;
 
     public static function orderedProduct($order, $req) {
 
@@ -56,6 +56,16 @@ class OrderedProduct extends Model
             self::$product->save();
 
             return self::$product;
+    }
+
+    public static function statusUpdateOrderedProduct($req, $id) {
+        self::$product = OrderedProduct::where('order_id', $id)->get();
+
+        foreach (self::$product as $product) {
+            self::$orderedProduct = OrderedProduct::find($product->id);
+            self::$orderedProduct->order_status = $req->order_status;
+            self::$orderedProduct->save();
+        }
     }
 
     public function product() {

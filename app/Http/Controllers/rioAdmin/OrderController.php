@@ -28,7 +28,9 @@ class OrderController extends Controller
     }
 
     public function orderUpdate(Request $request, $id) {
-        return $request;
+        Order::updateOrder($request, $id);
+        OrderedProduct::statusUpdateOrderedProduct($request, $id);
+        return back()->with('order_update_msg', 'Your Order Is Updated.');
     }
 
     public function orderCouponUpdate(Request $request, $id) {

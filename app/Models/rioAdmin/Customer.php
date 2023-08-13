@@ -2,6 +2,7 @@
 
 namespace App\Models\rioAdmin;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -27,11 +28,37 @@ class Customer extends Model
     }
 
     public static function customerUpdate($req, $id) {
-        //
+        self::$customer = User::find($id);
+        self::$customer->name = $req->name;
+        self::$customer->phone = $req->phone;
+        self::$customer->email = $req->email;
+        self::$customer->password = bcrypt($req->password);
+
+        if ($req->file('image')) {
+
+            if (file_exists(self::$customer->image)) {
+                unlink(self::$customer->image);
+            }
+
+            self::$customer->image = self::customerImgDir($req);
+        }
+        else {
+            self::$customer->image = self::$customer->image;
+        }
+
+        self::$customer->save();
+        return self::$customer;
     }
 
     public static function customerDelete($id) {
-        //
+
+        self::$customer = User::find($id);
+
+        if (file_exists(self::$customer->image)) {
+            unlink(self::$customer->image);
+        }
+
+        self::$customer->delete();
     }
 
 }

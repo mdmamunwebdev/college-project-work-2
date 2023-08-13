@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Restaurant In Online - @yield('title') </title>
+    <title>{{ $app_settings->app_title }} - @yield('title') </title>
 
     <!-- Favicons -->
     <link href="" rel="icon">
@@ -46,8 +46,8 @@
 
         <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
             <!-- Uncomment the line below if you also wish to use an image logo -->
-            <img src="{{ asset('/') }}rioHome/assets/image/logo.png" alt="">
-            <h1>RIO<span>.</span></h1>
+{{--            <img src="{{ asset($app_settings->app_logo) }}" alt="">--}}
+            <h1 class="text-uppercase">{{ $app_settings->app_title }}<span>.</span></h1>
         </a>
 
         <nav id="navbar" class="navbar">
@@ -55,7 +55,7 @@
         </nav><!-- .navbar -->
 
         <div class="d-flex align-items-center justify-content-between me-auto me-lg-0">
-            <a class="btn-book-a-table me-3" href="#book-a-table">Book a Table</a>
+{{--            <a class="btn-book-a-table me-3" href="#book-a-table">Book a Table</a>--}}
 
             <button type="button" class="btn btn-sm border-1 border-danger position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <i class="bi bi-cart4" style="font-size: 20px;"></i>

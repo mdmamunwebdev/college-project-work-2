@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RIO || @yield("title")</title>
+    <title class="text-uppercase">{{ $app_settings->app_title }} || @yield("title")</title>
 
     <!-- Boxicons CDN Link -->
     <link href="{{ asset('/') }}rioAdmin/assets/css/boxicons.min.css" rel="stylesheet">
@@ -44,8 +44,12 @@
 <div class="sidebar h-100 position-fixed ">
     <!-- Logo Details of sidebar start -->
     <div class="logo-details w-100 d-flex align-items-center">
-        <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class='bx bxs-registered text-center'></i></a>
-        <span class="logo_name fw-bold"><a href="{{ route('admin.dashboard') }}" class="nav-link">RIO</a></span>
+        <a href="{{ route('admin.dashboard') }}" class="nav-link">
+            <i class='bx bxs-registered text-center'></i>
+        </a>
+        <span class="logo_name fw-bold">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link text-uppercase">{{ $app_settings->app_title }}</a>
+        </span>
     </div> <!-- Logo Details of sidebar end -->
 
     <!-- Sidebar Link start -->
@@ -179,7 +183,7 @@
                     </li>
                     <li class="nav-item dropdown ps-4 pe-3">
                         <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
-                           data-bs-toggle="dropdown"> <img src="{{ asset('/') }}rioAdmin/assets/img/profile-img.jpg"
+                           data-bs-toggle="dropdown"> <img src="{{ asset( Auth::guard('admin')->user()->image ) }}"
                                                            alt="Profile"
                                                            class="rounded-circle neumo-primary p-1 border-neumo">
                             <span
@@ -187,24 +191,17 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile neumo-primary">
                             <li class="dropdown-header">
-                                <h6>{{ Auth::guard('admin')->user()->name }}</h6>
-                                <span>Web Designer</span>
+                                <h6 class="text-capitalize">{{ Auth::guard('admin')->user()->name }}</h6>
+                                <span>Web Developer</span>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item d-flex align-items-center" href="#"> <i
-                                        class="bi bi-person"></i> <span>My Profile</span> </a></li>
                             <li>
-                                <hr class="dropdown-divider">
+                                <a class="dropdown-item d-flex align-items-center" href="{{ route('account.settings-form') }}"> <i class="bi bi-gear"></i>
+                                    <span>Account Settings</span>
+                                </a>
                             </li>
-                            <li><a class="dropdown-item d-flex align-items-center" href="#"> <i class="bi bi-gear"></i>
-                                    <span>Account Settings</span> </a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center" href="#"> <i
-                                        class="bi bi-question-circle"></i> <span>Need Help?</span> </a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -228,13 +225,18 @@
 
         @yield('main-content')
 
-        <footer id="footer" class="footer footer-extra  neumo-primary my-2">
-            <div class="copyright text-neumo">
-                <script>document.write(new Date().getFullYear())</script> &copy; Copyright
-                <strong><span>Compnay Name </span></strong> RIO. All Rights Reserved
-            </div>
-            <div class="credits text-neumo"> Developed By <a href="#" class="text-secondary-neumo">Abdullah Al Mamun</a></div>
-        </footer>
+        @if($app_settings->footer_content)
+            {!! $app_settings->footer_content !!}
+        @else
+            <footer id="footer" class="footer footer-extra  neumo-primary my-2">
+                <div class="copyright text-neumo">
+                    <script>document.write(new Date().getFullYear())</script> &copy; Copyright
+                    <strong><span>Compnay Name </span></strong> RIO. All Rights Reserved
+                </div>
+                <div class="credits text-neumo"> Developed By <a href="#" class="text-secondary-neumo">Abdullah Al Mamun</a></div>
+            </footer>
+        @endif
+
     </div>
 </section><!--  Main content end -->
 

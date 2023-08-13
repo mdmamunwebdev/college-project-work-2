@@ -23,7 +23,7 @@
                 <div class="col-md-12">
                     <h1>
                         <a href="" class="typewrite" data-period="2000"
-                           data-type='[ "Hi, Im Abdullah Al Mamun.", "I am Creative.", "I Love Foods.", "I Love to Cooking." ]'>
+                           data-type='[ "{{ $app_settings->type_write_text }}" ]'>
                             <span class="wrap"></span>
                         </a>
                     </h1>
@@ -31,12 +31,13 @@
             </div>
             <div class="row justify-content-between gy-2  p-5">
                 <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-                    <h2 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h2>
-                    <p data-aos="fade-up" data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea
-                        consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
+                    <h2 data-aos="fade-up">{!! $app_settings->home_heading !!}</h2>
+                    <p data-aos="fade-up" data-aos-delay="100">
+                       {{ $app_settings->home_para }}
+                    </p>
                     <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <a href="#book-a-table" class="btn-book-a-table">Book a Table</a>
-                        <a href="https://www.youtube.com/watch?v=Lx0wy2-N2bg"
+{{--                        <a href="#book-a-table" class="btn-book-a-table">Book a Table</a>--}}
+                        <a href="{{ $app_settings->food_video }}"
                            class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
                     </div>
                 </div>

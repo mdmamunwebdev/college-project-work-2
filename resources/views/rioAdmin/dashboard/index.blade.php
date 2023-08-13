@@ -104,22 +104,22 @@
                 </li>
             </ul>
         </li>
-        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
-            <div class="iocn-link">
-                <a href="#">
-                    <i class="bi bi-table"></i>
-                    <span class="link_name">Table</span>
-                </a>
-                <i class='bx bxs-chevron-down arrow'></i>
-            </div>
-            <ul class="sub-menu">
-                <li class="ln"><span class="link_name">Table</span></li>
-                <li class="d-flex justify-content-start p-0">
-                    <i class='bx bx-list-plus'></i>
-                    <a href="">Table</a>
-                </li> <!-- When active This link, then here is added a class (active-item) -->
-            </ul>
-        </li>
+{{--        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->--}}
+{{--            <div class="iocn-link">--}}
+{{--                <a href="#">--}}
+{{--                    <i class="bi bi-table"></i>--}}
+{{--                    <span class="link_name">Table</span>--}}
+{{--                </a>--}}
+{{--                <i class='bx bxs-chevron-down arrow'></i>--}}
+{{--            </div>--}}
+{{--            <ul class="sub-menu">--}}
+{{--                <li class="ln"><span class="link_name">Table</span></li>--}}
+{{--                <li class="d-flex justify-content-start p-0">--}}
+{{--                    <i class='bx bx-list-plus'></i>--}}
+{{--                    <a href="">Table</a>--}}
+{{--                </li> <!-- When active This link, then here is added a class (active-item) -->--}}
+{{--            </ul>--}}
+{{--        </li>--}}
         <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
             <div class="iocn-link">
                 <a href="#">
@@ -132,7 +132,7 @@
                 <li class="ln"><span class="link_name">Settings</span></li>
                 <li class="d-flex justify-content-start p-0">
                     <i class='bx bx-list-plus'></i>
-                    <a href="#">Settings</a>
+                    <a href="{{ route('app.settings') }}">Settings</a>
                 </li> <!-- When active This link, then here is added a class (active-item) -->
             </ul>
         </li>
@@ -159,100 +159,50 @@
                 <div class="row">
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card sales-card neumo-primary">
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow neumo-primary">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Sales <span>| Today</span></h5>
+                                <h5 class="card-title">Sales</h5>
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-cart"></i></div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
-                                        <span class="text-success small pt-1 fw-bold">12%</span> <span
-                                                class="text-muted small pt-2 ps-1">increase</span>
+                                        <h6>{{ $sales }}</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> <!-- Sales -->
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card neumo-primary">
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow neumo-primary">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                                <h5 class="card-title">Revenue</h5>
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-currency-dollar"></i></div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
-                                        <span class="text-success small pt-1 fw-bold">8%</span> <span
-                                                class="text-muted small pt-2 ps-1">increase</span>
+                                        <h6>${{ $revenue }}</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> <!-- Revenue -->
                     <div class="col-xxl-4 col-xl-12">
                         <div class="card info-card customers-card neumo-primary">
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow neumo-primary">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Customers <span>| This Year</span></h5>
+                                <h5 class="card-title">Customers</h5>
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                                         <i class="bi bi-people"></i></div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
-                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                                                class="text-muted small pt-2 ps-1">decrease</span>
+                                        <h6>{{ count($customers) }}</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> <!-- Customers -->
                     <div class="col-12">
                         <div class="card neumo-primary">
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow neumo-primary">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Reports <span>/Today</span></h5>
+                                <h5 class="card-title">Reports <span>| Last 7 Times</span></h5>
                                 <div id="reportsChart"></div>
                                 <script>document.addEventListener("DOMContentLoaded", () => {
                                         new ApexCharts(document.querySelector("#reportsChart"), {
@@ -307,22 +257,11 @@
                                 </script>
                             </div>
                         </div>
-                    </div>
+                    </div> <!-- Reports -->
                     <div class="col-12">
                         <div class="card recent-sales overflow-auto neumo-primary">
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow neumo-primary">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
                             <div class="card-body">
-                                <h5 class="card-title">Recent Sales <span>| Today</span></h5>
+                                <h5 class="card-title">Recent Sales</h5>
                                 <table class="table table-borderless datatable">
                                     <thead>
                                     <tr class="neumo-primary">
@@ -372,24 +311,13 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
+                        </div> <!-- Recent Sales -->
+                    </div> <!-- Recent Sales -->
                     <div class="col-12">
                         <div class="card top-selling overflow-auto neumo-primary">
-                            <div class="filter">
-                                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow neumo-primary">
-                                    <li class="dropdown-header text-start">
-                                        <h6>Filter</h6>
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Today</a></li>
-                                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                                </ul>
-                            </div>
                             <div class="card-body pb-0">
-                                <h5 class="card-title">Top Selling <span>| Today</span></h5>
-                                <table class="table table-borderless">
+                                <h5 class="card-title">Top Selling</h5>
+                                <table class="table table-borderless text-capitalize">
                                     <thead>
                                     <tr class="neumo-primary">
                                         <th scope="col">Preview</th>
@@ -400,51 +328,20 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas
-                                                nulla</a></td>
-                                        <td>$64</td>
-                                        <td class="fw-bold">124</td>
-                                        <td>$5,828</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique
-                                                doloremque</a></td>
-                                        <td>$46</td>
-                                        <td class="fw-bold">98</td>
-                                        <td>$4,508</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a>
-                                        </td>
-                                        <td>$59</td>
-                                        <td class="fw-bold">74</td>
-                                        <td>$4,366</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum
-                                                error</a></td>
-                                        <td>$32</td>
-                                        <td class="fw-bold">63</td>
-                                        <td>$2,016</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus
-                                                repellendus</a></td>
-                                        <td>$79</td>
-                                        <td class="fw-bold">41</td>
-                                        <td>$3,239</td>
-                                    </tr>
+                                        @foreach($top_sell as $item)
+                                            <tr>
+                                                <th scope="row"><a href="#"><img src="{{ asset($item['product_image']) }}" alt=""></a></th>
+                                                <td>{{ $item['name'] }}</td>
+                                                <td>{{ $item['price'] }}</td>
+                                                <td class="fw-bold">{{ $item['product_qty'] }}</td>
+                                                <td>{{ $item['product_revenue'] }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
+                        </div> <!-- Top Selling -->
+                    </div> <!-- Top Selling -->
                 </div>
             </div>
             <div class="col-lg-4">
@@ -502,90 +399,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> <!-- Recent Activity -->
                 <div class="card neumo-primary">
-                    <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow neumo-primary">
-                            <li class="dropdown-header text-start">
-                                <h6>Filter</h6>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Today</a></li>
-                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                        </ul>
-                    </div>
                     <div class="card-body pb-0">
-                        <h5 class="card-title">Budget Report <span>| This Month</span></h5>
-                        <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
+                        <h5 class="card-title">Order Reports</h5>
+                        <div id="orderReportsChart" style="min-height: 400px;" class="echart"></div>
                         <script>document.addEventListener("DOMContentLoaded", () => {
-                                var budgetChart = echarts.init(document.querySelector("#budgetChart")).setOption({
-                                    legend: {
-                                        data: ['Allocated Budget', 'Actual Spending']
-                                    },
-                                    radar: {
-                                        // shape: 'circle',
-                                        indicator: [{
-                                            name: 'Sales',
-                                            max: 6500
-                                        },
-                                            {
-                                                name: 'Administration',
-                                                max: 16000
-                                            },
-                                            {
-                                                name: 'Information Technology',
-                                                max: 30000
-                                            },
-                                            {
-                                                name: 'Customer Support',
-                                                max: 38000
-                                            },
-                                            {
-                                                name: 'Development',
-                                                max: 52000
-                                            },
-                                            {
-                                                name: 'Marketing',
-                                                max: 25000
-                                            }
-                                        ]
-                                    },
-                                    series: [{
-                                        name: 'Budget vs spending',
-                                        type: 'radar',
-                                        data: [{
-                                            value: [4200, 3000, 20000, 35000, 50000, 18000],
-                                            name: 'Allocated Budget'
-                                        },
-                                            {
-                                                value: [5000, 14000, 28000, 26000, 42000, 21000],
-                                                name: 'Actual Spending'
-                                            }
-                                        ]
-                                    }]
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
-                <div class="card neumo-primary">
-                    <div class="filter">
-                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow neumo-primary">
-                            <li class="dropdown-header text-start">
-                                <h6>Filter</h6>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Today</a></li>
-                            <li><a class="dropdown-item" href="#">This Month</a></li>
-                            <li><a class="dropdown-item" href="#">This Year</a></li>
-                        </ul>
-                    </div>
-                    <div class="card-body pb-0">
-                        <h5 class="card-title">Website Traffic <span>| Today</span></h5>
-                        <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
-                        <script>document.addEventListener("DOMContentLoaded", () => {
-                                echarts.init(document.querySelector("#trafficChart")).setOption({
+                                echarts.init(document.querySelector("#orderReportsChart")).setOption({
                                     tooltip: {
                                         trigger: 'item'
                                     },
@@ -612,25 +432,14 @@
                                         labelLine: {
                                             show: false
                                         },
-                                        data: [{
-                                            value: 1048,
-                                            name: 'Search Engine'
-                                        },
+                                        data: [
+                                            {
+                                                value: 1048,
+                                                name: 'Order Cancel'
+                                            },
                                             {
                                                 value: 735,
-                                                name: 'Direct'
-                                            },
-                                            {
-                                                value: 580,
-                                                name: 'Email'
-                                            },
-                                            {
-                                                value: 484,
-                                                name: 'Union Ads'
-                                            },
-                                            {
-                                                value: 300,
-                                                name: 'Video Ads'
+                                                name: 'Order Complete'
                                             }
                                         ]
                                     }]
@@ -638,7 +447,7 @@
                             });
                         </script>
                     </div>
-                </div>
+                </div> <!-- Order Reports -->
             </div>
         </div>
     </section>

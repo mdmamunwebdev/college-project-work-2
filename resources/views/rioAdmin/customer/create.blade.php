@@ -257,19 +257,19 @@
                                                     <div class="avatar-upload">
                                                         <div class="avatar-edit">
                                                             <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"  name="image"/>
-                                                            <label for="imageUpload">
+                                                            <label for="imageUpload" style="background-color: #E6E7EE; box-shadow: 3px 3px 6px #b8b9be,-3px -3px 6px #fff;">
                                                                 <i class="bx bx-camera position-absolute" style="top: 10px; left: 10px;"></i>
                                                             </label>
                                                         </div>
-                                                        <div class="avatar-preview">
+                                                        <div class="avatar-preview" style="background-color: #E6E7EE; box-shadow: 3px 3px 6px #b8b9be,-3px -3px 6px #fff; border: 6px solid #E6E7EE;">
                                                             <div id="imagePreview" style="background-image: url({{'https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png'}});">
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12 card-footer text-center text-uppercase fw-bold neumo-primary">
-                                                <label for="imageUpload" class="d-block ">Profile Image</label>
+                                            <div class="col-md-12 card-footer text-center text-uppercase fw-bold neumo-primary" style="cursor: pointer;">
+                                                <label for="imageUpload" class="d-block" style="cursor: pointer;">Profile Image</label>
                                             </div>
                                         </div>
                                     </div>
@@ -280,7 +280,7 @@
                                             <label for="name" class="col-md-3">Name</label>
                                             <div class="col-md-9">
                                                 <div class="card card-body neumo-primary p-0">
-                                                    <input type="text" class="form-control" name="name" placeholder="Name"/>
+                                                    <input type="text" id="name" class="form-control" name="name" placeholder="Name"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -295,6 +295,15 @@
                                         </div>
 
                                         <div class="row mb-3">
+                                            <label for="phone" class="col-md-3">Phone</label>
+                                            <div class="col-md-9">
+                                                <div class="card card-body neumo-primary p-0">
+                                                    <input id="phone" type="number" class="form-control" name="phone" placeholder="Phone"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
                                             <label for="password" class="col-md-3">Password</label>
                                             <div class="col-md-9">
                                                 <input id="password" type="password" class="form-control" name="password"/>
@@ -302,9 +311,16 @@
                                         </div>
 
                                         <div class="row mb-3">
+                                            <label for="confirm_password" class="col-md-3">Confirm Password</label>
+                                            <div class="col-md-9">
+                                                <input id="confirm_password" type="password" class="form-control" name="password_confirmation"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mb-3">
                                             <label for="submit" class="col-md-3"></label>
                                             <div class="d-grid d-md-flex justify-content-md-start">
-                                                <input id="submit" type="submit" class="btn btn-primary neumo-primary w-30" value="SAVE INFORMATION"/>
+                                                <input id="submit" type="submit" class="btn btn-sm btn-primary neumo-primary w-30" value="SAVE INFORMATION"/>
                                             </div>
                                         </div>
 
