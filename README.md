@@ -21,7 +21,7 @@ The Restaurant Management System built on Laravel 10 is a comprehensive and effi
 
 ##### Step 1 :
  ```
- git clone https://github.com/mdmamunwebdev/ restaurant-management-system.git
+ git clone https://github.com/mdmamunwebdev/restaurant-management-system.git
  ```
 
 ##### Step 2 :
