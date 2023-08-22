@@ -9,6 +9,7 @@ use App\Models\rioAdmin\Order;
 use App\Models\rioAdmin\Product;
 use App\Models\rioHome\OrderedProduct;
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 
 class AdminAuthController extends Controller
@@ -20,6 +21,13 @@ class AdminAuthController extends Controller
 
 
     function index() {
+
+//        $values = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
+//
+//        $randomIndex = array_rand($values);
+//        $randomValue = $values[$randomIndex];
+//
+//        return "Random Value: $randomValue";
 
         $products = Product::all();
 
@@ -65,11 +73,16 @@ class AdminAuthController extends Controller
         }
 
         return view('rioAdmin.dashboard.index', [
+
             'customers' => User::all(),
             'sales'     => $this->qty,
             'revenue'   => $this->revenue,
-            'recent_sales' => OrderedProduct::orderBy('id', 'desc')->take(10),
+            'recent_sales' => OrderedProduct::orderBy('id', 'desc')->take(5)->get(),
             'top_sale'  => $this->topSaling,
+            'recent_activities'  => Order::orderBy('id', 'desc')->take(5)->get(),
+            'order_canceled'  => count(Order::where('order_status', 3)->get()),
+            'order_completed'  => count(Order::where('order_status', 2)->get()),
+
         ]
         );
     }

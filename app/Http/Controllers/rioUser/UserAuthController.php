@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\rioUser;
 
 use App\Http\Controllers\Controller;
+use App\Models\rioAdmin\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserAuthController extends Controller
 {
     function index() {
-        return view('rioUser.dashboard.index');
+        return view('rioUser.dashboard.index', ['orders' => Order::where('email', Auth::user()->email)->orderBy('id', 'desc')->take(5)->get()]);
     }
 
     function loginForm() {

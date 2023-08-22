@@ -55,6 +55,10 @@ Route::post('/register', [UserAuthController::class, 'register'])->name('registe
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserAuthController::class, 'index'])->name('dashboard');
     Route::post('/logout', [UserAuthController::class, 'logout'])->name('logout');
+
+    Route::get('/order/history', [\App\Http\Controllers\rioUser\OrderHistoryController::class, 'orderHistory'])->name('order.history');
+    Route::get('/product/history', [\App\Http\Controllers\rioUser\ProductHistoryController::class, 'productHistory'])->name('product.history');
+    Route::get('/user/account/settings', [\App\Http\Controllers\rioUser\AccountSettingsController::class, 'settings'])->name('user.account.settings');
 });
 
 /*
