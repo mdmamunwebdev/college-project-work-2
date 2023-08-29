@@ -60,13 +60,18 @@
 @section('main-content')
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 text-capitalize">Welcome to - {{ Auth::user()->name }} !</h1>
+        <h2>Order History</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Order</li>
+            </ol>
+        </nav>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12 my-5 py-5">
-                <h2>Order History</h2>
+            <div class="col-md-12">
                 <div class="table-responsive small my-5">
                     <table class="table table-bordered table-dark table-striped table-sm">
                         <thead>

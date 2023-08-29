@@ -51,11 +51,11 @@ class CustomerController extends Controller
 
     function update(Request $request, $id) {
 
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        if ($request->password) {
+            $request->validate([
+                'password' => 'min:6|confirmed',
+            ]);
+        }
 
         $this->customer = Customer::customerUpdate($request, $id);
 

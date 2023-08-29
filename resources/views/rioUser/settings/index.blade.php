@@ -73,42 +73,50 @@
 @section('main-content')
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 text-capitalize">Welcome to - {{ Auth::user()->name }} !</h1>
+        <h2>General Settings</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Settings</li>
+            </ol>
+        </nav>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-8 m-auto">
+            <div class="col-8 m-auto my-5">
                 <div class="card">
-                    <form action="" method="post">
+                    <form action="{{ route('user.account.settings.update', ['id' => Auth::user()->id]) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+
                         <div class="card-body row">
                             <label for="name" class="col-md-6">Name</label>
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="name" id="name">
+                                <input class="form-control" type="text" name="name" id="name" value="{{ Auth::user()->name }}">
                             </div>
                         </div>
                         <div class="card-body row">
                             <label for="email" class="col-md-6">Email</label>
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="email" id="email">
+                                <input class="form-control" type="text" name="email" id="email" value="{{ Auth::user()->email }}">
                             </div>
                         </div>
                         <div class="card-body row">
                             <label for="phone" class="col-md-6">Phone</label>
                             <div class="col-md-6">
-                                <input class="form-control" type="number" min="0" name="phone" id="phone">
+                                <input class="form-control" type="number" min="0" name="phone" id="phone" value="{{ Auth::user()->phone }}">
                             </div>
                         </div>
                         <div class="card-body row">
                             <label for="password" class="col-md-6">Password</label>
                             <div class="col-md-6">
-                                <input class="form-control" type="password" name="password" id="password">
+                                <input class="form-control"  autocomplete="new-password" type="password" name="password" id="password">
                             </div>
                         </div>
                         <div class="card-body row">
                             <label for="password" class="col-md-6">Confirm Password</label>
                             <div class="col-md-6">
-                                <input class="form-control" type="password" name="password" id="password">
+                                <input id="confirm_password" type="password" class="form-control" name="password_confirmation"/>
                             </div>
                         </div>
 

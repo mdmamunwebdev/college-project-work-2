@@ -11,6 +11,10 @@ use App\Http\Controllers\rioAdmin\AppSettingsController;
 use App\Http\Controllers\rioHome\CartController;
 use App\Http\Controllers\rioHome\OrderPlaceController;
 use App\Http\Controllers\rioHome\PageController;
+use App\Http\Controllers\rioUser\OrderHistoryController;
+use App\Http\Controllers\rioUser\OrderTrackController;
+use App\Http\Controllers\rioUser\ProductHistoryController;
+use App\Http\Controllers\rioUser\UserAccountSettingsController;
 use App\Http\Controllers\rioUser\UserAuthController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\TagController;
@@ -56,9 +60,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserAuthController::class, 'index'])->name('dashboard');
     Route::post('/logout', [UserAuthController::class, 'logout'])->name('logout');
 
-    Route::get('/order/history', [\App\Http\Controllers\rioUser\OrderHistoryController::class, 'orderHistory'])->name('order.history');
-    Route::get('/product/history', [\App\Http\Controllers\rioUser\ProductHistoryController::class, 'productHistory'])->name('product.history');
-    Route::get('/user/account/settings', [\App\Http\Controllers\rioUser\AccountSettingsController::class, 'settings'])->name('user.account.settings');
+    Route::post('order/track', [OrderTrackController::class, 'orderTrack'])->name('order.track');
+    Route::get('/order/history', [OrderHistoryController::class, 'orderHistory'])->name('order.history');
+    Route::get('/product/history', [ProductHistoryController::class, 'productHistory'])->name('product.history');
+    Route::get('/user/account/settings', [UserAccountSettingsController::class, 'settings'])->name('user.account.settings');
+    Route::post('/user/account/settings/update/{id}', [UserAccountSettingsController::class, 'update'])->name('user.account.settings.update');
 });
 
 /*

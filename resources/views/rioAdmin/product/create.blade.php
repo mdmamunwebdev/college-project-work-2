@@ -392,13 +392,6 @@
                                                     aria-selected="true">All Categories
                                             </button>
                                         </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link text-secondary-neumo" id="two-tab-category"
-                                                    data-bs-toggle="tab" data-bs-target="#two-category-tab-pane"
-                                                    type="button" role="tab" aria-controls="profile-tab-pane"
-                                                    aria-selected="false">Most Used
-                                            </button>
-                                        </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
                                         <div class="p-3 tab-pane fade show active bg-neumo text-neumo text-capitalize"
@@ -414,21 +407,6 @@
                                             @else
                                                 <span>No Category yet !!</span>
                                             @endif
-                                        </div>
-                                        <div class="p-3 tab-pane fade neumo-bg text-neumo text-capitalize" id="two-category-tab-pane"
-                                             role="tabpanel" aria-labelledby="two-tab-category" tabindex="0">
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
                                         </div>
                                     </div>
 
@@ -462,108 +440,6 @@
                         </div>
                     </div>
 
-                    <div class="card card-body accordion neumo-primary text-primary-size" id="accordionTag">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header border-bottom border-1 border-light">
-                                <button class="accordion-button px-0 bg-neumo text-neumo" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true"
-                                        aria-controls="collapseOne">
-                                    Product tags
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse show px-0"
-                                 data-bs-parent="#accordionTag">
-                                <div class="accordion-body bg-neumo">
-                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link active text-secondary-neumo" id="tab-tag-one"
-                                                    data-bs-toggle="tab" data-bs-target="#one-tag-tab-pane"
-                                                    type="button" role="tab" aria-controls="home-tab-pane"
-                                                    aria-selected="true">All Tags
-                                            </button>
-                                        </li>
-                                        <li class="nav-item" role="presentation">
-                                            <button class="nav-link text-secondary-neumo" id="tab-tag-two"
-                                                    data-bs-toggle="tab" data-bs-target="#two-tag-tab-pane"
-                                                    type="button" role="tab" aria-controls="profile-tab-pane"
-                                                    aria-selected="false">Most Used
-                                            </button>
-                                        </li>
-                                    </ul>
-                                    <div class="tab-content" id="myTabContent">
-                                        <div class="p-3 tab-pane fade show active bg-neumo" id="one-tag-tab-pane"
-                                             role="tabpanel" aria-labelledby="tab-tag-one" tabindex="0">
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                        </div>
-                                        <div class="p-3 tab-pane fade bg-neumo" id="two-tag-tab-pane" role="tabpanel"
-                                             aria-labelledby="tab-tag-two" tabindex="0">
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                            <label for="" class="me-1 mt-1"><input type="checkbox" name="" id=""
-                                                                                   class="me-2"/>Lunch</label>
-                                        </div>
-                                    </div>
-
-                                    <p class="mt-3">
-                                        <button class="btn  btn-sm border-secondary-neumo neumo-primary text-primary-neumo"
-                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapseTag"
-                                                aria-expanded="false" aria-controls="collapseTag">
-                                            <i class="bi bi-plus"></i>Add a new Tag
-                                        </button>
-                                    </p>
-                                    <div class="collapse" id="collapseTag">
-                                        <div class="card card-body p-1 bg-neumo" style="box-shadow: none;">
-                                            <form action="" method="post">
-                                                <div class="row mb-1 g-0">
-                                                    <div class="col-9">
-                                                        <input type="text"
-                                                               class="form-control w-100 rounded-0 text-primary-size"/>
-                                                    </div>
-                                                    <div class="col-3">
-                                                        <input type="submit"
-                                                               class="btn btn-dark btn-sm w-100 h-100 rounded-0 text-primary-size"
-                                                               value="ADD" id=""/>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card card-body accordion neumo-primary text-primary-size" id="accordionGallery">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header border-bottom border-1 border-light">
-                                <button class="accordion-button px-0 bg-neumo text-neumo" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true"
-                                        aria-controls="collapseFour">
-                                    Product Gallery
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse  px-0"
-                                 data-bs-parent="#accordionGallery">
-                                <div class="accordion-body bg-neumo">
-                                    ....///
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="card neumo-primary">
                         <div class="d-flex  justify-content-between border-bottom border-1 border-light ">
                             <div class="title p-2">
@@ -574,37 +450,24 @@
                                 <i class="bi bi-arrows-collapse"></i>
                             </div>
                         </div>
-                        <div class="card-body collapse show p-0" id="collapseImage">
-                            <div class="card-text p-3">
-                                {{--                                <div class="AppBody bg-neumo">--}}
-                                {{--                                    <div class="icon" onclick="document.getElementById('prdoductImage').click();" style="cursor: pointer;">--}}
-                                {{--                                        <i class="bi bi-cloud-arrow-up"></i>--}}
-                                {{--                                    </div>--}}
+                        <div class="card-body collapse show p-3" id="collapseImage">
 
-                                {{--                                    <h3>Drag & Drop</h3>--}}
-                                {{--                                    <span>OR</span>--}}
+                            <div class="upload" style="height: 300px;">
+                                <img id="image"
+                                     class="h-75 w-75 mt-5"
+                                     src="{{ asset('rioAdmin/assets/img/product-preview-sample.jpg') }}"
+                                     alt="product-preview-sample-image">
 
-                                {{--                                    <button class="btn btn-sm neumo-primary" id="imgUploadBtn" onclick="event.preventDefault(); document.getElementById('prdoductImage').click();">Browse File</button>--}}
-                                {{--                                    <input id="prdoductImage" type="file" hidden name="image"/>--}}
-                                {{--                                </div>--}}
-                                {{--                                <input id="prdoductImage" type="file"  name="image"/>--}}
-
-                                <div class="upload">
-                                    <img id="image" class="h-100 w-100"
-                                         src="https://t4.ftcdn.net/jpg/02/17/88/73/360_F_217887350_mDfLv2ootQNeffWXT57VQr8OX7IvZKvB.jpg"
-                                         alt="">
-
-                                    <div class="rightRound neumo-primary" id="upload">
-                                        <input type="file" name="image" id="fileImg" accept=".jpg, .jpeg, .png"/>
-                                        <i class="bi bi-camera"></i>
-                                    </div>
-
-                                    <div class="leftRound neumo-primary d-none" id="cancel">
-                                        <i class="bi bi-x"></i>
-                                    </div>
+                                <div class="rightRound neumo-primary" id="upload">
+                                    <input type="file" name="image" id="fileImg" accept=".jpg, .jpeg, .png"/>
+                                    <i class="bi bi-camera"></i>
                                 </div>
 
+                                <div class="leftRound neumo-primary d-none" id="cancel">
+                                    <i class="bi bi-x"></i>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -674,7 +537,6 @@
 
             }
         }
-
 
         $('#summernote').summernote({
             placeholder: 'Write Here Your Product Descriptions ',

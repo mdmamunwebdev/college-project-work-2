@@ -60,38 +60,47 @@
 @section('main-content')
     <div
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 text-capitalize">Welcome to - {{ Auth::user()->name }} !</h1>
+        <h2>Product History</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Products</li>
+            </ol>
+        </nav>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12 my-5 py-5">
-                <h2>Product History</h2>
+            <div class="col-md-12">
                 <div class="table-responsive small my-5">
-                    <table class="table table-bordered table-dark table-striped table-sm">
+                    <table class="table table-hover table-bordered table-dark table-striped table-sm">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Payment Status</th>
-                            <th scope="col">Order Status</th>
-                            <th scope="col">Payment Method</th>
-                            <th scope="col">Shipping Method</th>
+                            <th scope="col">Product Id</th>
+                            <th scope="col">Order Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Product Qty</th>
+                            <th scope="col">Sale Price</th>
+                            <th scope="col">Date</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($orders as  $order)
 
-                            <tr>
-                                <td>#{{ $order->id }}</td>
-                                <td>
-                                    <div class="badge bg-primary">
-                                        {{ $order->status }}
-                                    </div>
-                                </td>
-                                <td>{{ $order->order_status }}</td>
-                                <td>{{ $order->pay_method }}</td>
-                                <td>{{ $order->ship_method }}</td>
-                            </tr>
+                            @foreach($order->orderedProduct as $orderedProduct)
+                                <tr>
+                                    <td>#{{ $orderedProduct->product->id }}</td>
+                                    <td>#{{ $orderedProduct->order_id }}</td>
+                                    <td class="text-uppercase">{{ $orderedProduct->product->name }}</td>
+                                    <td>
+                                        <img class="img-thumbnail" style="width: 50px; height: 50px;" src="{{ asset( $orderedProduct->product->image ) }}" alt="">
+                                    </td>
+                                    <td>{{ $orderedProduct->product_qty }}</td>
+                                    <td>&dollar;{{ $orderedProduct->sale_price }}</td>
+                                    <td>{{ $orderedProduct->order->created_at }}</td>
+                                </tr>
+                            @endforeach
 
                         @endforeach
                         </tbody>

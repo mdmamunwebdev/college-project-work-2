@@ -57,13 +57,24 @@
         <div class="d-flex align-items-center justify-content-between me-auto me-lg-0">
 {{--            <a class="btn-book-a-table me-3" href="#book-a-table">Book a Table</a>--}}
 
-            <button type="button" class="btn btn-sm border-1 border-danger position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                <i class="bi bi-cart4" style="font-size: 20px;"></i>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    99+
+            @if(count($items) != 0)
+                <button type="button" class="btn btn-sm border-1 border-danger position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <i class="bi bi-cart4" style="font-size: 20px;"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    {{  count($items)  }}+
                     <span class="visually-hidden">unread messages</span>
                 </span>
-            </button>
+                </button>
+            @else
+                <button type="button" class="btn btn-sm border-1 border-danger position-relative">
+                    <i class="bi bi-cart4" style="font-size: 20px;"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    0
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+                </button>
+            @endif
+
         </div>
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
         <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
@@ -106,7 +117,9 @@
                         @foreach($items as $itemCheck)
                             @if( $category->id === $itemCheck->category_id )
                                 <div class="card cart">
-                                    <label class="title text-capitalize">{{ $category->name }}</label>
+                                    <label class="title text-capitalize">
+                                        {{ $category->name }}
+                                    </label>
                                     <div class="products">
                                         @foreach( $items as $item )
                                             @if( $category->id === $item->category_id )

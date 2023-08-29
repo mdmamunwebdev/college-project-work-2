@@ -181,6 +181,84 @@
             </div>
         </div>
 
+        <div class="card card-body container mb-5">
+            <h2 class="text-center text-uppercase">Order Id : #{{ $order->id }}</h2>
+            <div class="row">
+                <div class="col-12 col-md-10   m-auto hh-grayBox pt45 pb20">
+                    @if( $order->order_status == 0 )
+
+                        <div class="row justify-content-between">
+                            <div class="order-tracking completed">
+                                <span class="is-complete bg-secondary"></span>
+                                <p>Received</p>
+                            </div>
+                            <div class="order-tracking">
+                                <span class="is-complete bg-primary"></span>
+                                <p>Processing</p>
+                            </div>
+                            <div class="order-tracking">
+                                <span class="is-complete bg-success"></span>
+                                <p>Completed</p>
+                            </div>
+                        </div>
+
+                    @elseif( $order->order_status == 1 )
+
+                        <div class="row justify-content-between">
+                            <div class="order-tracking completed">
+                                <span class="is-complete bg-secondary"></span>
+                                <p>Received</p>
+                            </div>
+                            <div class="order-tracking completed">
+                                <span class="is-complete bg-primary"></span>
+                                <p>Processing</p>
+                            </div>
+
+                            <div class="order-tracking ">
+                                <span class="is-complete bg-success"></span>
+                                <p>Completed</p>
+                            </div>
+                        </div>
+
+                    @elseif( $order->order_status == 2 )
+
+                        <div class="row justify-content-between">
+                            <div class="order-tracking completed">
+                                <span class="is-complete bg-secondary"></span>
+                                <p>Received</p>
+                            </div>
+                            <div class="order-tracking completed">
+                                <span class="is-complete bg-primary"></span>
+                                <p>Processing</p>
+                            </div>
+                            <div class="order-tracking completed">
+                                <span class="is-complete bg-success"></span>
+                                <p>Completed</p>
+                            </div>
+                        </div>
+
+                    @else
+
+                        <div class="row justify-content-between">
+                            <div class="order-tracking completed">
+                                <span class="is-complete bg-secondary"></span>
+                                <p>Received</p>
+                            </div>
+                            <div class="order-tracking completed">
+                                <span class="is-complete bg-primary"></span>
+                                <p>Processing</p>
+                            </div>
+                            <div class="order-tracking completed">
+                                <span class="is-complete bg-danger"></span>
+                                <p>Canceled</p>
+                            </div>
+                        </div>
+
+                    @endif
+                </div>
+            </div>
+        </div>
+
         <h2>Recent Order</h2>
         <div class="table-responsive small mb-5">
             <table class="table table-striped table-sm">

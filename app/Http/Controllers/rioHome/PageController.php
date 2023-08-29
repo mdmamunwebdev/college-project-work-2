@@ -25,7 +25,14 @@ class PageController extends Controller
     }
 
     function checkout(Request $request) {
-        return view('rioHome.pages.checkout', ['categories' => Category::all(), 'products' => Product::all(), 'items' => Cart::where('user_ip', $request->ip())->get(), 'cart_coupon' => CartCoupon::where( 'user_ip', $request->ip() )->first(), 'total' => 0]);
+
+        if (Cart::where('user_ip', $request->ip())->first()) {
+            return view('rioHome.pages.checkout', ['categories' => Category::all(), 'products' => Product::all(), 'items' => Cart::where('user_ip', $request->ip())->get(), 'cart_coupon' => CartCoupon::where( 'user_ip', $request->ip() )->first(), 'total' => 0]);
+        }
+        else {
+            return back();
+        }
+
     }
 
     function success(Request $request, User $user, $id) {
@@ -35,13 +42,14 @@ class PageController extends Controller
         if ($this->order) {
             $customer = Customer::where('email', $this->order->email)->first();
 
-            if ( !$customer ) {
+            if ( $customer == null ) {
 
                 $customer = Customer::newCustomer($this->order);
 
                 $userData = $user->create([
                     'name' => $customer->username,
                     'email' => $customer->email,
+                    'phone' => $customer->phone,
                     'password' => bcrypt($customer->phone),
                 ]);
 

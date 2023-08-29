@@ -306,7 +306,7 @@
                                         <div class="row mb-3">
                                             <label for="password" class="col-md-3">Password</label>
                                             <div class="col-md-9">
-                                                <input id="password" type="password" class="form-control" name="password"/>
+                                                <input id="password" type="password"  autocomplete="new-password" class="form-control" name="password"/>
                                             </div>
                                         </div>
 
