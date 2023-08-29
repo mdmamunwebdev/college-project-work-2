@@ -21,12 +21,12 @@ The Restaurant Management System built on Laravel 10 is a comprehensive and effi
 
 ##### Step 1 :
  ```
- git clone https://github.com/mdmamunwebdev/college-project-work-2.git
+ git clone https://github.com/mdmamunwebdev/restaurant-management-system.git
  ```
 
 ##### Step 2 :
  ```
- cd college-project-work-2
+ cd  restaurant-management-system
  ```
 
 ##### Step 3 :
@@ -35,8 +35,10 @@ The Restaurant Management System built on Laravel 10 is a comprehensive and effi
  ```
 
 ##### Step 4 :
+
+###### Open .env and update
  ```
- open .env and update DB_DATABASE (database details)
+ DB_DATABASE (database details)
  ```
 
 ##### Step 5 :
