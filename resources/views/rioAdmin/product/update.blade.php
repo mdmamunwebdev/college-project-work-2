@@ -8,7 +8,7 @@
 
     <ul class="nav-links h-100 py-3 px-2">
         <li class="mb-2 with-out-submenu">
-            <a href="{{ route('admin.dashboard') }}">
+            <a href="{{ route('admin.dashboard') }}" class="">
                 <i class='bx bx-grid-alt neumo-color'></i>
                 <span class="link_name ">Dashboard</span>
             </a>
@@ -49,6 +49,74 @@
                 <li class="d-flex justify-content-start p-0">
                     <i class='bx bx-list-plus'></i>
                     <a href="{{ route('category') }}">Category</a>
+                </li> <!-- When active This link, then here is added a class (active-item) -->
+            </ul>
+        </li>
+        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
+            <div class="iocn-link">
+                <a href="#">
+                    <i class='bx bxs-coupon'></i>
+                    <span class="link_name">Coupon</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li class="ln"><span class="link_name">Coupon</span></li>
+                <li class="d-flex justify-content-start p-0">
+                    <i class='bx bx-list-plus'></i>
+                    <a href="{{ route('coupon') }}">Coupon</a>
+                </li> <!-- When active This link, then here is added a class (active-item) -->
+            </ul>
+        </li>
+        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
+            <div class="iocn-link">
+                <a href="#">
+                    <i class="bi bi-receipt"></i>
+                    <span class="link_name">Order</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li class="ln"><span class="link_name">Order</span></li>
+                <li class="d-flex justify-content-start p-0">
+                    <i class='bx bx-list-plus'></i>
+                    <a href="{{ route('order.list') }}">Order</a>
+                </li> <!-- When active This link, then here is added a class (active-item) -->
+            </ul>
+        </li>
+        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
+            <div class="iocn-link">
+                <a href="#">
+                    <i class="bi bi-person-badge"></i>
+                    <span class="link_name">Customer</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li class="ln"><span class="link_name">Customer</span></li>
+                <li class="d-flex justify-content-start p-0">
+                    <i class='bx bx-list-plus'></i>
+                    <a href="{{ route('customer.list') }}">Customer</a>
+                </li> <!-- When active This link, then here is added a class (active-item) -->
+                <li class="d-flex justify-content-start p-0">
+                    <i class='bx bx-add-to-queue'></i>
+                    <a href="{{ route('customer.create') }}" class="flex-grow-1">Add Customer</a>
+                </li>
+            </ul>
+        </li>
+        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
+            <div class="iocn-link">
+                <a href="#">
+                    <i class="bi bi-gear"></i>
+                    <span class="link_name">Settings</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li class="ln"><span class="link_name">Settings</span></li>
+                <li class="d-flex justify-content-start p-0">
+                    <i class='bx bx-list-plus'></i>
+                    <a href="{{ route('app.settings') }}">Settings</a>
                 </li> <!-- When active This link, then here is added a class (active-item) -->
             </ul>
         </li>

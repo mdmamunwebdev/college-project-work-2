@@ -50,7 +50,7 @@ return new class extends Migration
             $table->tinyInteger('order_status')->default(0);
             $table->tinyInteger('pay_method')->nullable();
             $table->tinyInteger('ship_method')->nullable();
-            $table->tinyInteger('ship_date')->nullable();
+            $table->date('ship_date')->nullable();
             $table->string('transaction_id')->nullable();
             $table->string('currency')->nullable();
             $table->tinyInteger('same_address')->nullable();

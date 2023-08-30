@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('price');
             $table->text('description')->nullable();
             $table->tinyInteger('status')->nullable()->default(0);
-            $table->tinyInteger('calculation')->nullable()->default(0);
+            $table->bigInteger('calculation')->nullable()->default(0);
             $table->timestamps();
         });
     }

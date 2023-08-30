@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('category_id');
-            $table->tinyInteger('product_id');
+            $table->bigInteger('category_id');
+            $table->bigInteger('product_id');
             $table->timestamps();
         });
     }

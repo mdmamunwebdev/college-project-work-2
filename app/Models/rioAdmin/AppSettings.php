@@ -59,7 +59,7 @@ class AppSettings extends Model
         self::$app_settings->food_video = $req->food_video;
         self::$app_settings->about_heading = $req->about_heading;
 
-        if ($req->file('app_logo')) {
+        if ($req->file('about_hero_img')) {
             if (file_exists(self::$app_settings->about_hero_img)) {
                 unlink(self::$app_settings->about_hero_img);
             }

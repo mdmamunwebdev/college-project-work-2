@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('ordered_products', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('order_id');
-            $table->tinyInteger('product_id');
-            $table->tinyInteger('category_id');
+            $table->bigInteger('order_id');
+            $table->bigInteger('product_id');
+            $table->bigInteger('category_id');
             $table->bigInteger('product_qty');
             $table->double('sale_price');
             $table->double('total_price');
+            $table->tinyInteger('order_status');
             $table->ipAddress('user_ip');
             $table->timestamps();
         });

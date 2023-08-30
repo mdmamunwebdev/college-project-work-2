@@ -231,7 +231,7 @@
             <footer id="footer" class="footer footer-extra  neumo-primary my-2">
                 <div class="copyright text-neumo">
                     <script>document.write(new Date().getFullYear())</script> &copy; Copyright
-                    <strong><span>Compnay Name </span></strong> RIO. All Rights Reserved
+                    <strong><span>RIO. </span></strong>  All Rights Reserved
                 </div>
                 <div class="credits text-neumo"> Developed By <a href="#" class="text-secondary-neumo">Abdullah Al Mamun</a></div>
             </footer>
