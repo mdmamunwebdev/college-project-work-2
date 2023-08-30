@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $app_settings->app_title }} - @yield('title') </title>
+
+    @if(empty($app_settings->app_title))
+        <title>RIO - @yield('title') </title>
+    @else
+        <title>{{ $app_settings->app_title }} - @yield('title') </title>
+    @endif
+
 
     <!-- Favicons -->
     <link href="" rel="icon">
@@ -47,7 +53,13 @@
         <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
             <!-- Uncomment the line below if you also wish to use an image logo -->
 {{--            <img src="{{ asset($app_settings->app_logo) }}" alt="">--}}
-            <h1 class="text-uppercase">{{ $app_settings->app_title }}<span>.</span></h1>
+
+            @if(empty($app_settings->app_title))
+                <h1 class="text-uppercase">RIO<span>.</span></h1>
+            @else
+                <h1 class="text-uppercase">{{ $app_settings->app_title }}<span>.</span></h1>
+            @endif
+
         </a>
 
         <nav id="navbar" class="navbar">
