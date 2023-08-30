@@ -57,7 +57,7 @@ class PageController extends Controller
                     ]);
 
                     if ($userData) {
-                        auth()->attempt(['email'  => $customer->email, 'password' => $customer->phone]);
+                        auth()->attempt(['email'  => $userData->email, 'password' => $userData->phone]);
                     }
                 }
                 else {

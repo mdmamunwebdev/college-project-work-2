@@ -225,18 +225,26 @@
 
         @yield('main-content')
 
-        @if($app_settings->footer_content)
-            {!! $app_settings->footer_content !!}
-        @else
-            <footer id="footer" class="footer footer-extra  neumo-primary my-2">
-                <div class="copyright text-neumo">
-                    <script>document.write(new Date().getFullYear())</script> &copy; Copyright
-                    <strong><span>RIO. </span></strong>  All Rights Reserved
-                </div>
-                <div class="credits text-neumo"> Developed By <a href="#" class="text-secondary-neumo">Abdullah Al Mamun</a></div>
-            </footer>
-        @endif
+{{--        @if($app_settings->footer_content)--}}
+{{--            {!! $app_settings->footer_content !!}--}}
+{{--        @else--}}
+{{--            <footer id="footer" class="footer footer-extra  neumo-primary my-2">--}}
+{{--                <div class="copyright text-neumo">--}}
+{{--                    <script>document.write(new Date().getFullYear())</script> &copy; Copyright--}}
+{{--                    <strong><span>RIO. </span></strong>  All Rights Reserved--}}
+{{--                </div>--}}
+{{--                <div class="credits text-neumo"> Developed By <a href="#" class="text-secondary-neumo">Abdullah Al Mamun</a></div>--}}
+{{--            </footer>--}}
+{{--        @endif--}}
 
+        <footer id="footer" class="footer footer-extra  neumo-primary my-2">
+            <div class="copyright text-neumo">
+                <script>document.write(new Date().getFullYear())</script> &copy; Copyright
+                <strong><span>RIO. </span></strong>  All Rights Reserved
+            </div>
+            <div class="credits text-neumo"> Developed By <a href="#" class="text-secondary-neumo">Abdullah Al Mamun</a></div>
+        </footer>
+        
     </div>
 </section><!--  Main content end -->
 
