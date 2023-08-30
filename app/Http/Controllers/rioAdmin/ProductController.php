@@ -4,7 +4,6 @@ namespace App\Http\Controllers\rioAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\rioAdmin\Category;
-use App\Models\rioAdmin\Tag;
 use App\Models\rioAdmin\Product;
 use App\Models\rioAdmin\ProductCategory;
 use Illuminate\Http\Request;
@@ -18,7 +17,7 @@ class ProductController extends Controller
     }
 
     function productCreateForm() {
-        return view('rioAdmin.product.create', ['categories' => Category::all(), 'tags' => Tag::all()]);
+        return view('rioAdmin.product.create', ['categories' => Category::all()]);
     }
 
     function create(Request $request) {
