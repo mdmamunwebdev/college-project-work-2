@@ -55,22 +55,6 @@
         <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
             <div class="iocn-link">
                 <a href="#">
-                    <i class="bi bi-tag"></i>
-                    <span class="link_name">Tag</span>
-                </a>
-                <i class='bx bxs-chevron-down arrow'></i>
-            </div>
-            <ul class="sub-menu">
-                <li class="ln"><span class="link_name">Category</span></li>
-                <li class="d-flex justify-content-start p-0">
-                    <i class='bx bx-list-plus'></i>
-                    <a href="{{ route('category') }}">Category</a>
-                </li> <!-- When active This link, then here is added a class (active-item) -->
-            </ul>
-        </li>
-        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
-            <div class="iocn-link">
-                <a href="#">
                     <i class="bi bi-receipt"></i>
                     <span class="link_name">Order</span>
                 </a>
@@ -105,22 +89,6 @@
                 <a href="#">
                     <i class='bx bxs-coupon'></i>
                     <span class="link_name">Cuupon</span>
-                </a>
-                <i class='bx bxs-chevron-down arrow'></i>
-            </div>
-            <ul class="sub-menu">
-                <li class="ln"><span class="link_name">Category</span></li>
-                <li class="d-flex justify-content-start p-0">
-                    <i class='bx bx-list-plus'></i>
-                    <a href="{{ route('category') }}">Category</a>
-                </li> <!-- When active This link, then here is added a class (active-item) -->
-            </ul>
-        </li>
-        <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
-            <div class="iocn-link">
-                <a href="#">
-                    <i class="bi bi-table"></i>
-                    <span class="link_name">Table</span>
                 </a>
                 <i class='bx bxs-chevron-down arrow'></i>
             </div>
