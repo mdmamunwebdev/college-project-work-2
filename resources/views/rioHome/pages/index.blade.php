@@ -22,23 +22,48 @@
             <div class="row neumorphism p-5">
                 <div class="col-md-12">
                     <h1>
-                        <a href="" class="typewrite" data-period="2000"
-                           data-type='[ "{{ $app_settings->type_write_text }}" ]'>
-                            <span class="wrap"></span>
-                        </a>
+                        @if(empty($app_settings->type_write_text))
+                            <a href="" class="typewrite" data-period="2000"
+                               data-type='[ "No Text Here" ]'>
+                                <span class="wrap"></span>
+                            </a>
+                        @else
+                            <a href="" class="typewrite" data-period="2000"
+                               data-type='[ "{{ $app_settings->type_write_text }}" ]'>
+                                <span class="wrap"></span>
+                            </a>
+                        @endif
                     </h1>
                 </div>
             </div>
             <div class="row justify-content-between gy-2  p-5">
                 <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
-                    <h2 data-aos="fade-up">{!! $app_settings->home_heading !!}</h2>
-                    <p data-aos="fade-up" data-aos-delay="100">
-                       {{ $app_settings->home_para }}
-                    </p>
+                    @if(empty($app_settings->home_heading))
+                        <h2 data-aos="fade-up">No Heading Here</h2>
+                    @else
+                        <h2 data-aos="fade-up">{!! $app_settings->home_heading !!}</h2>
+                    @endif
+
+                    @if(empty($app_settings->home_para))
+                        <p data-aos="fade-up" data-aos-delay="100">
+                            No Para Here
+                        </p>
+                    @else
+                        <p data-aos="fade-up" data-aos-delay="100">
+                            {{ $app_settings->home_para }}
+                        </p>
+                    @endif
+
                     <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
 {{--                        <a href="#book-a-table" class="btn-book-a-table">Book a Table</a>--}}
-                        <a href="{{ $app_settings->food_video }}"
-                           class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                        @if(empty($app_settings->food_video))
+                            <a href="#"
+                               class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                        @else
+                            <a href="{{ $app_settings->food_video }}"
+                               class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+                        @endif
+
                     </div>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start numorphism rounded-circle">
