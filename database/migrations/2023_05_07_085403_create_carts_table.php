@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('product_id');
             $table->bigInteger('category_id');
-            $table->bigInteger('coupon_id');
+            $table->bigInteger('coupon_id')->nullable();
             $table->bigInteger('product_qty');
             $table->ipAddress('user_ip');
             $table->timestamps();
