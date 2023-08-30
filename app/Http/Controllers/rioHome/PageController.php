@@ -46,15 +46,24 @@ class PageController extends Controller
 
                 $customer = Customer::newCustomer($this->order);
 
-                $userData = $user->create([
-                    'name' => $customer->username,
-                    'email' => $customer->email,
-                    'phone' => $customer->phone,
-                    'password' => bcrypt($customer->phone),
-                ]);
+                $user = User::where('email', $customer->email)->first();
 
-                if ($userData) {
-                    auth()->attempt(['email'  => $customer->email, 'password' => $customer->phone]);
+                if (empty($user)) {
+                    $userData = $user->create([
+                        'name' => $customer->username,
+                        'email' => $customer->email,
+                        'phone' => $customer->phone,
+                        'password' => bcrypt($customer->phone),
+                    ]);
+
+                    if ($userData) {
+                        auth()->attempt(['email'  => $userData->email, 'password' => $userData->phone]);
+                    }
+                }
+                else {
+                    if ($customer) {
+                        auth()->attempt(['email'  => $customer->email, 'password' => $customer->phone]);
+                    }
                 }
 
             }

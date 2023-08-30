@@ -17,7 +17,6 @@ use App\Http\Controllers\rioUser\ProductHistoryController;
 use App\Http\Controllers\rioUser\UserAccountSettingsController;
 use App\Http\Controllers\rioUser\UserAuthController;
 use App\Http\Controllers\SslCommerzPaymentController;
-use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 
