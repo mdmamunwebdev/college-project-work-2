@@ -82,6 +82,10 @@
                     <i class='bx bx-list-plus'></i>
                     <a href="{{ route('customer.list') }}">Customer</a>
                 </li> <!-- When active This link, then here is added a class (active-item) -->
+                <li class="d-flex justify-content-start p-0">
+                    <i class='bx bx-add-to-queue'></i>
+                    <a href="{{ route('customer.create') }}" class="flex-grow-1">Add Customer</a>
+                </li>
             </ul>
         </li>
         <li class="with-submenu"> <!-- When active This link, then here is added a class (showMenu) -->
